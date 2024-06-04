@@ -4,6 +4,554 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>form</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+      defer
+    ></script>
   </head>
-  <body></body>
+  <body>
+    <div class="container containerLarge">
+      <form class="form-control">
+        <!-- SECTION 1 -->
+        <div id="section1">
+          <!-- 1ere question STATUT -->
+          <div class="mb-4" id="optionStatus">
+            <label for="selectOccupation" class="form-label"
+              >Quel statut avez vous?
+            </label>
+            <select
+              class="form-select"
+              id="selectOccupation"
+              aria-label="Statut de la personne"
+            >
+              <option selected>----</option>
+              <option value="1">En recherche d'emploi</option>
+              <option value="2">Entrepreneur Individue</option>
+              <option value="3">Dirigeant</option>
+              <option value="3">Salarié</option>
+              <option value="3">Étudiant</option>
+              <option value="3">Entreprise</option>
+              <option value="3">Autre</option>
+            </select>
+          </div>
+
+          <div class="mb-4" id="optionOther">
+            <label for="other" class="form-label">
+              Veuillez préciser votre statut
+            </label>
+            <input type="text" class="form-control" id="other" />
+          </div>
+
+          <!-- option entreprise & entrepeneur individuel -->
+          <div class="mb-4" id="optionBussines">
+            <label for="bussinesName" class="form-label">
+              Nom de l'entreprise
+            </label>
+            <input type="text" class="form-control mb-4" id="bussinesName" />
+
+            <label for="bussinesActivity" class="form-label">
+              Domaine d'activité
+            </label>
+            <input
+              type="text"
+              class="form-control mb-4"
+              id="bussinesActivity"
+            />
+
+            <div class="row mb-4">
+              <div class="mb-4 col-md-6">
+                <label for="city" class="form-label"> Ville </label>
+                <input type="text" class="form-control" id="city" />
+              </div>
+
+              <div class="col-md-6">
+                <label for="country" class="form-label"> Pays </label>
+                <input type="text" class="form-control" id="country" />
+              </div>
+            </div>
+          </div>
+
+          <!-- option etudiant -->
+          <div class="mb-4" id="optionStudent">
+            <label for="selectStudent" class="form-label"
+              >Quel niveau d'étude avez vous ?
+            </label>
+            <select
+              class="form-select"
+              id="selectStudent"
+              aria-label="Statut de la personne"
+            >
+              <option selected>----</option>
+              <option value="1">Collège</option>
+              <option value="2">Lycée</option>
+              <option value="3">CAP</option>
+              <option value="4">Apprentissage</option>
+              <option value="5">BAC +2</option>
+              <option value="6">BAC +3</option>
+              <option value="8">BAC +5</option>
+              <option value="9">Doctorat</option>
+            </select>
+          </div>
+
+          <!-- option salarié -->
+          <div class="mb-4" id="optionJob">
+            <label for="jobTitle" class="form-label">
+              Intitulé du poste que vous occupez
+            </label>
+            <input type="text" class="form-control mb-4" id="jobTitle" />
+          </div>
+
+          <!-- option recherce d'emploi -->
+          <div class="mb-4" id="optionJobSearch">
+            <label for="jobSearch" class="form-label">
+              Dans quel domaine recherchez vous un emploi ?
+            </label>
+            <input type="text" class="form-control mb-4" id="jobSearch" />
+          </div>
+
+          <!-- radio si salarié ou dirigeant entreprise -->
+          <div id="optionSelfOrCollaborators">
+            <label for="selfOrCollaborators" class="form-label">
+              Votre demande concerne-t-elle vous-même ou vos collaborateurs ?
+            </label>
+            <div class="mb-4" id="selfOrCollaborators">
+              <div class="btn-group" role="group">
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="btnradio"
+                  id="self"
+                  value="self"
+                />
+                <label class="btn btn-outline-dark" for="self">Moi-même</label>
+
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="btnradio"
+                  id="them"
+                  value="them"
+                />
+                <label class="btn btn-outline-dark" for="them"
+                  >Mes collaborateurs</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- next button 1 -->
+          <div class="text-center">
+            <button
+              type="button"
+              id="next1"
+              class="btn btn-primary btn-lg mb-4"
+            >
+              Suivant
+            </button>
+          </div>
+        </div>
+
+        <!-- SECTION 2 -->
+        <div id="section2">
+          <div class="mb-4" id="optionStatus">
+            <label for="usageRate" class="form-label"
+              >Quel est votre usage d'un ordinateur ?
+            </label>
+            <select class="form-select" id="usageRate">
+              <option selected>----</option>
+              <option value="1">Rare</option>
+              <option value="2">Ponctuel</option>
+              <option value="3">Régulier</option>
+              <option value="3">Quotidien</option>
+            </select>
+          </div>
+
+          <!-- quels logicies utilisés -->
+          <label for="softwareUse" class="form-label"
+            >Quels logiciels utilisez-vous ?
+          </label>
+          <div class="mb-4" id="softwareUse">
+            <div class="row">
+              <div class="btn-group mb-2" role="group">
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="word"
+                  value="Word"
+                />
+                <label class="btn btn-outline-primary" for="word">Word</label>
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="excel"
+                  value="Excel"
+                />
+                <label class="btn btn-outline-primary" for="excel">Excel</label>
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="powerPoint"
+                  value="PowerPoint"
+                />
+                <label class="btn btn-outline-primary" for="powerPoint"
+                  >PowerPoint</label
+                >
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="outlook"
+                  value="Outlook"
+                />
+                <label class="btn btn-outline-primary" for="outlook"
+                  >Outlook</label
+                >
+              </div>
+
+              <div class="btn-group mb-2" role="group">
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="suiteOffice"
+                  value="Suite Office"
+                />
+                <label class="btn btn-outline-primary" for="suiteOffice"
+                  >Suite Office</label
+                >
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="googleDrive"
+                  value="Google Drive"
+                />
+                <label class="btn btn-outline-primary" for="googleDrive"
+                  >Google Drive</label
+                >
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="oneDrive"
+                  value="One
+                Drive"
+                />
+                <label class="btn btn-outline-primary" for="oneDrive"
+                  >One Drive</label
+                >
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="canva"
+                  value="Canva"
+                />
+                <label class="btn btn-outline-primary" for="canva">Canva</label>
+              </div>
+
+              <div class="btn-group mb-1" role="group">
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="photoShop"
+                  value="Photoshop"
+                />
+                <label class="btn btn-outline-primary" for="photoShop"
+                  >Photoshop</label
+                >
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="illustrator"
+                  value="Illustrator"
+                />
+                <label class="btn btn-outline-primary" for="illustrator"
+                  >Illustrator</label
+                >
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="premierePro"
+                  value="Premiere Pro"
+                />
+                <label class="btn btn-outline-primary" for="premierePro"
+                  >Premiere Pro</label
+                >
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="suiteAdobe"
+                  value="Suite Adobe"
+                />
+                <label class="btn btn-outline-primary" for="suiteAdobe"
+                  >Suite Adobe</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- quels outils pour s'aider -->
+          <label for="toolsUse" class="form-label"
+            >Quels outils informatiques utilisez-vous pour vous aider dans votre
+            travail ?
+          </label>
+          <div class="mb-4" id="toolsUse">
+            <div class="row">
+              <div class="btn-group" role="group">
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkBoxTools"
+                  name="checkBoxTools"
+                  value="Aucun"
+                />
+                <label class="btn btn-outline-primary" for="checkBoxTools"
+                  >Aucun</label
+                >
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkBoxTools2"
+                  name="checkBoxTools2"
+                  value="Logiciels"
+                />
+                <label class="btn btn-outline-primary" for="checkBoxTools2"
+                  >Logiciels</label
+                >
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkBoxTools3"
+                  name="checkBoxTools3"
+                  value="Intelligence Artificielle"
+                />
+                <label class="btn btn-outline-primary" for="checkBoxTools3"
+                  >Intelligence Artificielle</label
+                >
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkBoxTools4"
+                  name="checkBoxTools4"
+                  value="Outils en ligne"
+                />
+                <label class="btn btn-outline-primary" for="checkBoxTools4"
+                  >Outils en ligne</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- combien de collaborateurs numeric -->
+          <div class="mb-4">
+            <label for="numberCollaborators" class="form-label"
+              >Nombre de collaborateurs concernés :
+            </label>
+            <input type="number" id="typeNumber" class="form-control" />
+          </div>
+
+          <!-- option si les collaborateurs utilisent ou non un ordi -->
+          <div id="optionUseComputer">
+            <label for="useComputer" class="form-label"
+              >Utilisent-ils l'ordinateur dans le cadre de leur travail ?
+            </label>
+            <div class="mb-4" id="useComputer">
+              <div class="btn-group" role="group">
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="btnradio3"
+                  id="yesUse"
+                  value="1"
+                />
+                <label class="btn btn-outline-dark" for="yesUse">Oui</label>
+
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="btnradio3"
+                  id="noUse"
+                  value="0"
+                />
+                <label class="btn btn-outline-dark" for="noUse">Non</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button
+              type="button"
+              id="next1"
+              class="btn btn-primary btn-lg mb-4"
+            >
+              Suivant
+            </button>
+          </div>
+        </div>
+
+        <!-- SECTION 3 -->
+        <div id="section3">
+          <!-- option souhait pour lui meme-->
+          <div id="optionWantToSelf">
+            <label for="wantTo" class="form-label">Vous souhaitez : </label>
+            <div class="mb-4" id="wantTo">
+              <div class="row">
+                <div class="btn-group" role="group">
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxWantTo"
+                    name="checkBoxWantTo"
+                    value="Plus efficace"
+                  />
+                  <label class="btn btn-outline-primary" for="checkBoxWantTo"
+                    >Être plus efficace</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxWantTo2"
+                    name="checkBoxWantTo2"
+                    value="Monter en competences"
+                  />
+                  <label class="btn btn-outline-primary" for="checkBoxWantTo2"
+                    >Monter en compétences</label
+                  >
+
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxWantTo3"
+                    name="checkBoxWantTo3"
+                    value="Remise à niveau"
+                  />
+                  <label class="btn btn-outline-primary" for="checkBoxWantTo3"
+                    >Remise à niveau</label
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- option souhait pour collaborateurs-->
+          <div id="optionWantToCollaborators">
+            <label for="wantToCollborators" class="form-label"
+              >Votre demande concerne :
+            </label>
+            <div class="mb-4" id="wantToCollborators">
+              <div class="row">
+                <div class="btn-group" role="group">
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkboxWantToCollaborators"
+                    name="checkboxWantToCollaborators"
+                    value="Une montée en compétences"
+                  />
+                  <label
+                    class="btn btn-outline-primary"
+                    for="checkboxWantToCollaborators"
+                    >Une montée en compétences</label
+                  >
+
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkboxWantToCollaborators2"
+                    name="checkboxWantToCollaborators2"
+                    value="Une recherche de
+                    rentabilité"
+                  />
+                  <label
+                    class="btn btn-outline-primary"
+                    for="checkboxWantToCollaborators2"
+                    >Une recherche de rentabilité</label
+                  >
+
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkboxWantToCollaborators3"
+                    name="checkboxWantToCollaborators3"
+                    value="Un recyclage de connaissances"
+                  />
+                  <label
+                    class="btn btn-outline-primary"
+                    for="checkboxWantToCollaborators3"
+                    >Un recyclage de connaissances</label
+                  >
+
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkboxWantToCollaborators4"
+                    name="checkboxWantToCollaborators4"
+                    value="Remise à niveau"
+                  />
+                  <label
+                    class="btn btn-outline-primary"
+                    for="checkboxWantToCollaborators4"
+                    >Remise à niveau</label
+                  >
+
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkboxWantToCollaborators5"
+                    name="checkboxWantToCollaborators5"
+                    value="Du coaching"
+                  />
+                  <label
+                    class="btn btn-outline-primary"
+                    for="checkboxWantToCollaborators5"
+                    >Du coaching</label
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div></div>
+        </div>
+
+        <!-- checkbox rgpd 
+        <div class="form-check mb-4 mt-3">
+          <input
+            class="form-check-input me-2"
+            type="checkbox"
+            value="1"
+            id="rgpd"
+            checked
+          />
+          <label class="form-check-label" for="rgpd">
+            En soumettant ce formulaire, j’accepte que les informations saisies
+            soient traitées dans le cadre de la demande exprimée et de la
+            relation client qui peut en découler.
+          </label>
+        </div>-->
+      </form>
+    </div>
+  </body>
 </html>
