@@ -25,6 +25,37 @@
   <body>
     <div class="container containerLarge">
       <form class="form-control">
+        <!-- step by step -->
+        <div class="card-body" id="steps">
+          <div
+            class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x"
+          >
+            <div class="step completed">
+              <div class="step-icon-wrap">
+                <div class="step-icon">1</div>
+              </div>
+            </div>
+
+            <div class="step completed">
+              <div class="step-icon-wrap">
+                <div class="step-icon">2</div>
+              </div>
+            </div>
+
+            <div class="step completed">
+              <div class="step-icon-wrap">
+                <div class="step-icon">3</div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-icon-wrap">
+                <div class="step-icon">4</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- SECTION 1 -->
         <div id="section1" class="">
           <!-- 1ere question STATUT -->
@@ -38,13 +69,14 @@
               <option value="2">Entrepreneur Individuel</option>
               <option value="3">Dirigeant</option>
               <option value="3">Salarié</option>
-              <option value="3">Étudiant</option>
-              <option value="3">Entreprise</option>
-              <option value="3">Autre</option>
+              <option value="5">Étudiant</option>
+              <option value="2">Entreprise</option>
+              <option value="7">Autre</option>
             </select>
           </div>
 
-          <div class="mb-4" id="optionOtherOccupation">
+          <!-- option autre -->
+          <div class="mb-4 dispNone" id="option7">
             <label for="other" class="form-label">
               Veuillez préciser votre statut
             </label>
@@ -52,7 +84,7 @@
           </div>
 
           <!-- option entreprise & entrepeneur individuel -->
-          <div class="mb-4" id="optionBussines">
+          <div class="mb-4 dispNone" id="option2">
             <label for="bussinesName" class="form-label">
               Nom de l'entreprise
             </label>
@@ -82,7 +114,7 @@
           </div>
 
           <!-- option etudiant -->
-          <div class="mb-4" id="optionStudent">
+          <div class="mb-4 dispNone" id="option5">
             <label for="selectStudent" class="form-label"
               >Quel niveau d'étude avez vous ?
             </label>
@@ -104,7 +136,7 @@
           </div>
 
           <!-- option salarié -->
-          <div class="mb-4" id="optionJob">
+          <div class="mb-4 dispNone" id="option3">
             <label for="jobTitle" class="form-label">
               Intitulé du poste que vous occupez
             </label>
@@ -112,7 +144,7 @@
           </div>
 
           <!-- option recherce d'emploi -->
-          <div class="mb-4" id="optionJobSearch">
+          <div class="mb-4 dispNone" id="option1">
             <label for="jobSearch" class="form-label">
               Dans quel domaine recherchez vous un emploi ?
             </label>
@@ -120,11 +152,11 @@
           </div>
 
           <!-- radio si salarié ou dirigeant entreprise -->
-          <div id="optionSelfOrCollaborators">
+          <div class="mb-4" id="option3">
             <label for="selfOrCollaborators" class="form-label">
               Votre demande concerne-t-elle vous-même ou vos collaborateurs ?
             </label>
-            <div class="mb-4" id="selfOrCollaborators">
+            <div class="" id="selfOrCollaborators">
               <div class="btn-group" role="group">
                 <input
                   type="radio"
@@ -171,14 +203,16 @@
           </label>
           <div class="mb-4" id="softwareUse">
             <div class="row">
-              <div class="btn-group mb-2" role="group">
+              <div class="btn-group flex-wrap mb-2" role="group">
                 <input
                   type="checkbox"
                   class="btn-check"
                   id="word"
                   value="Word"
                 />
-                <label class="btn btn-outline-primary" for="word">Word</label>
+                <label class="btn btn-outline-primary m-1 rounded-0" for="word"
+                  >Word</label
+                >
 
                 <input
                   type="checkbox"
@@ -186,7 +220,9 @@
                   id="excel"
                   value="Excel"
                 />
-                <label class="btn btn-outline-primary" for="excel">Excel</label>
+                <label class="btn btn-outline-primary m-1" for="excel"
+                  >Excel</label
+                >
 
                 <input
                   type="checkbox"
@@ -194,7 +230,7 @@
                   id="powerPoint"
                   value="PowerPoint"
                 />
-                <label class="btn btn-outline-primary" for="powerPoint"
+                <label class="btn btn-outline-primary m-1" for="powerPoint"
                   >PowerPoint</label
                 >
 
@@ -204,19 +240,17 @@
                   id="outlook"
                   value="Outlook"
                 />
-                <label class="btn btn-outline-primary" for="outlook"
+                <label class="btn btn-outline-primary m-1" for="outlook"
                   >Outlook</label
                 >
-              </div>
 
-              <div class="btn-group mb-2" role="group">
                 <input
                   type="checkbox"
                   class="btn-check"
                   id="suiteOffice"
                   value="Suite Office"
                 />
-                <label class="btn btn-outline-primary" for="suiteOffice"
+                <label class="btn btn-outline-primary m-1" for="suiteOffice"
                   >Suite Office</label
                 >
 
@@ -226,7 +260,7 @@
                   id="googleDrive"
                   value="Google Drive"
                 />
-                <label class="btn btn-outline-primary" for="googleDrive"
+                <label class="btn btn-outline-primary m-1" for="googleDrive"
                   >Google Drive</label
                 >
 
@@ -237,7 +271,7 @@
                   value="One
                 Drive"
                 />
-                <label class="btn btn-outline-primary" for="oneDrive"
+                <label class="btn btn-outline-primary m-1" for="oneDrive"
                   >One Drive</label
                 >
 
@@ -247,17 +281,17 @@
                   id="canva"
                   value="Canva"
                 />
-                <label class="btn btn-outline-primary" for="canva">Canva</label>
-              </div>
+                <label class="btn btn-outline-primary m-1" for="canva"
+                  >Canva</label
+                >
 
-              <div class="btn-group mb-1" role="group">
                 <input
                   type="checkbox"
                   class="btn-check"
                   id="photoShop"
                   value="Photoshop"
                 />
-                <label class="btn btn-outline-primary" for="photoShop"
+                <label class="btn btn-outline-primary m-1" for="photoShop"
                   >Photoshop</label
                 >
 
@@ -267,7 +301,7 @@
                   id="illustrator"
                   value="Illustrator"
                 />
-                <label class="btn btn-outline-primary" for="illustrator"
+                <label class="btn btn-outline-primary m-1" for="illustrator"
                   >Illustrator</label
                 >
 
@@ -277,7 +311,7 @@
                   id="premierePro"
                   value="Premiere Pro"
                 />
-                <label class="btn btn-outline-primary" for="premierePro"
+                <label class="btn btn-outline-primary m-1" for="premierePro"
                   >Premiere Pro</label
                 >
 
@@ -287,7 +321,9 @@
                   id="suiteAdobe"
                   value="Suite Adobe"
                 />
-                <label class="btn btn-outline-primary" for="suiteAdobe"
+                <label
+                  class="btn btn-outline-primary m-1 rounded-0"
+                  for="suiteAdobe"
                   >Suite Adobe</label
                 >
               </div>
@@ -301,7 +337,7 @@
           </label>
           <div class="mb-4" id="toolsUse">
             <div class="row">
-              <div class="btn-group" role="group">
+              <div class="btn-group flex-wrap" role="group">
                 <input
                   type="checkbox"
                   class="btn-check"
@@ -392,7 +428,7 @@
             <label for="wantTo" class="form-label">Vous souhaitez : </label>
             <div class="mb-4" id="wantTo">
               <div class="row">
-                <div class="btn-group" role="group">
+                <div class="btn-group flex-wrap" role="group">
                   <input
                     type="checkbox"
                     class="btn-check"
@@ -436,7 +472,7 @@
             </label>
             <div class="mb-4" id="wantToCollborators">
               <div class="row">
-                <div class="btn-group" role="group">
+                <div class="btn-group flex-wrap" role="group">
                   <input
                     type="checkbox"
                     class="btn-check"
@@ -513,7 +549,7 @@
           </label>
           <div class="mb-4" id="domain">
             <div class="row">
-              <div class="btn-group mb-2" role="group">
+              <div class="btn-group flex-wrap mb-2" role="group">
                 <input
                   type="checkbox"
                   class="btn-check"
@@ -556,9 +592,7 @@
                 <label class="btn btn-outline-primary" for="checkboxDomain4"
                   >Design</label
                 >
-              </div>
 
-              <div class="btn-group mb-2" role="group">
                 <input
                   type="checkbox"
                   class="btn-check"
@@ -601,9 +635,7 @@
                 <label class="btn btn-outline-primary" for="checkboxDomain8"
                   >Intelligence Artificielle</label
                 >
-              </div>
 
-              <div class="btn-group mb-2" role="group">
                 <input
                   type="checkbox"
                   class="btn-check"
@@ -646,9 +678,7 @@
                 <label class="btn btn-outline-primary" for="checkboxDomain12"
                   >Création de site (CMS)</label
                 >
-              </div>
 
-              <div class="btn-group mb-2" role="group">
                 <input
                   type="checkbox"
                   class="btn-check"
@@ -702,7 +732,7 @@
             </label>
             <div class="mb-4" id="ifProgramming">
               <div class="row">
-                <div class="btn-group mb-2" role="group">
+                <div class="btn-group flex-wrap mb-2" role="group">
                   <input
                     type="checkbox"
                     class="btn-check"
@@ -753,9 +783,7 @@
                     for="checkBoxProgramming4"
                     >PHP</label
                   >
-                </div>
 
-                <div class="btn-group mb-2" role="group">
                   <input
                     type="checkbox"
                     class="btn-check"
@@ -805,7 +833,7 @@
             </label>
             <div class="mb-4" id="ifDatabase">
               <div class="row">
-                <div class="btn-group mb-2" role="group">
+                <div class="btn-group flex-wrap mb-2" role="group">
                   <input
                     type="checkbox"
                     class="btn-check"
@@ -837,9 +865,7 @@
                   <label class="btn btn-outline-primary" for="checkBoxDatabase3"
                     >Oracle</label
                   >
-                </div>
 
-                <div class="btn-group mb-2" role="group">
                   <input
                     type="checkbox"
                     class="btn-check"
@@ -879,11 +905,11 @@
           <!-- option si reséaux sociaux -->
           <div id="optionIfSocial">
             <label for="ifSocial" class="form-label"
-              >Quel langage(s) de programmation :
+              >Quels réseaux sociaux :
             </label>
             <div class="mb-4" id="ifSocial">
               <div class="row">
-                <div class="btn-group mb-2" role="group">
+                <div class="btn-group flex-wrap mb-2" role="group">
                   <input
                     type="checkbox"
                     class="btn-check"
@@ -926,9 +952,7 @@
                   <label class="btn btn-outline-primary" for="checkBoxSocial4"
                     >Snapchat</label
                   >
-                </div>
 
-                <div class="btn-group mb-2" role="group">
                   <input
                     type="checkbox"
                     class="btn-check"
@@ -975,57 +999,59 @@
         </div>
 
         <!-- SECTION 4 -->
-        <div id="section4" class="">
+        <div id="section4" class="dispNone">
           <label for="typeWish" class="form-label"
             >Type de formation souhaitée :
           </label>
-          <div class="mb-4" id="typeWish">
-            <div class="btn-group btn-group-lg" role="group">
-              <input
-                type="radio"
-                class="btn-check"
-                name="btnradio4"
-                id="ourLocal"
-              />
-              <label
-                class="btn btn-outline-primary rounded-0 py-4"
-                for="ourLocal"
-                >Nos locaux (Cannes FR)</label
-              >
+          <div class="mb-4 row" id="typeWish">
+            <input
+              type="radio"
+              class="btn-check"
+              name="btnradio4"
+              id="ourLocal"
+            />
+            <label
+              class="btn btn-outline-dark rounded-0 py-4 col-sm mx-1"
+              for="ourLocal"
+              >Dans nos locaux à Cannes (FR)</label
+            >
 
-              <input
-                type="radio"
-                class="btn-check"
-                name="btnradio4"
-                id="remote"
-              />
-              <label class="btn btn-outline-primary p-4" for="remote"
-                >En distanciel (visio)</label
-              >
+            <input
+              type="radio"
+              class="btn-check"
+              name="btnradio4"
+              id="yourLocal"
+            />
+            <label
+              class="btn btn-outline-dark rounded-0 p-4 col-sm mx-1"
+              id="yourLocal"
+              for="yourLocal"
+              >Dans vos locaux</label
+            >
 
-              <input
-                type="radio"
-                class="btn-check"
-                name="btnradio4"
-                id="hybride"
-              />
-              <label class="btn btn-outline-primary p-4" for="hybride"
-                >Hybride (présentiel et distanciel)</label
-              >
+            <input
+              type="radio"
+              class="btn-check"
+              name="btnradio4"
+              id="remote"
+            />
+            <label
+              class="btn btn-outline-dark rounded-0 p-4 col-sm mx-1"
+              for="remote"
+              >En distanciel (visioconférence)</label
+            >
 
-              <input
-                type="radio"
-                class="btn-check"
-                name="btnradio4"
-                id="yourLocal"
-              />
-              <label
-                class="btn btn-outline-primary rounded-0 p-4"
-                id="yourLocal"
-                for="yourLocal"
-                >Dans vos locaux</label
-              >
-            </div>
+            <input
+              type="radio"
+              class="btn-check"
+              name="btnradio4"
+              id="hybride"
+            />
+            <label
+              class="btn btn-outline-dark rounded-0 p-4 col-sm mx-1"
+              for="hybride"
+              >Hybride (présentiel et distanciel)</label
+            >
           </div>
 
           <!-- informations personnelles / de l'entreprise -->
@@ -1042,9 +1068,6 @@
               </div>
             </div>
 
-            <label for="email" class="form-label"> Email </label>
-            <input type="text" class="form-control mb-4" id="email" />
-
             <div class="row mb-4">
               <div class="mb-4 col-md-6">
                 <label for="city" class="form-label"> Ville </label>
@@ -1057,6 +1080,12 @@
               </div>
             </div>
           </div>
+
+          <label for="email" class="form-label"> Email </label>
+          <input type="text" class="form-control mb-4" id="email" />
+
+          <label for="phoneNumber" class="form-label"> Téléphone </label>
+          <input type="text" class="form-control mb-4" id="phoneNumber" />
 
           <!-- checkbox rgpd -->
           <div class="form-check mb-4">
