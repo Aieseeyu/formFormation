@@ -4,3 +4,11 @@
     width: 50%;
   }
 }
+
+.dispNone {
+  display: none;
+}
+
+#yourLocal {
+  display: none;
+}

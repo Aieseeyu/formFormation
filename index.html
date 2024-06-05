@@ -15,33 +15,27 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
-      defer
     ></script>
     <script
       src="https://code.jquery.com/jquery-3.7.1.js"
       integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
       crossorigin="anonymous"
-      defer
     ></script>
   </head>
   <body>
     <div class="container containerLarge">
       <form class="form-control">
         <!-- SECTION 1 -->
-        <div id="section1">
+        <div id="section1" class="">
           <!-- 1ere question STATUT -->
           <div class="mb-4" id="optionStatus">
             <label for="selectOccupation" class="form-label"
               >Quel statut avez vous?
             </label>
-            <select
-              class="form-select"
-              id="selectOccupation"
-              aria-label="Statut de la personne"
-            >
+            <select class="form-select" id="selectOccupation">
               <option selected>----</option>
               <option value="1">En recherche d'emploi</option>
-              <option value="2">Entrepreneur Individue</option>
+              <option value="2">Entrepreneur Individuel</option>
               <option value="3">Dirigeant</option>
               <option value="3">Salarié</option>
               <option value="3">Étudiant</option>
@@ -50,7 +44,7 @@
             </select>
           </div>
 
-          <div class="mb-4" id="optionOther">
+          <div class="mb-4" id="optionOtherOccupation">
             <label for="other" class="form-label">
               Veuillez préciser votre statut
             </label>
@@ -73,7 +67,8 @@
               id="bussinesActivity"
             />
 
-            <div class="row mb-4">
+            <!-- A ENLEVER VILLE PAYS ENTREPRISE -->
+            <!-- <div class="row mb-4">
               <div class="mb-4 col-md-6">
                 <label for="city" class="form-label"> Ville </label>
                 <input type="text" class="form-control" id="city" />
@@ -83,7 +78,7 @@
                 <label for="country" class="form-label"> Pays </label>
                 <input type="text" class="form-control" id="country" />
               </div>
-            </div>
+            </div> -->
           </div>
 
           <!-- option etudiant -->
@@ -153,21 +148,10 @@
               </div>
             </div>
           </div>
-
-          <!-- next button 1 -->
-          <div class="text-center">
-            <button
-              type="button"
-              id="next1"
-              class="btn btn-primary btn-lg mb-4"
-            >
-              Suivant
-            </button>
-          </div>
         </div>
 
         <!-- SECTION 2 -->
-        <div id="section2">
+        <div id="section2" class="dispNone">
           <div class="mb-4" id="optionStatus">
             <label for="usageRate" class="form-label"
               >Quel est votre usage d'un ordinateur ?
@@ -399,20 +383,10 @@
               </div>
             </div>
           </div>
-
-          <div class="text-center">
-            <button
-              type="button"
-              id="next1"
-              class="btn btn-primary btn-lg mb-4"
-            >
-              Suivant
-            </button>
-          </div>
         </div>
 
         <!-- SECTION 3 -->
-        <div id="section3">
+        <div id="section3" class="dispNone">
           <!-- option souhait pour lui meme-->
           <div id="optionWantToSelf">
             <label for="wantTo" class="form-label">Vous souhaitez : </label>
@@ -533,25 +507,587 @@
             </div>
           </div>
 
-          <div></div>
+          <!-- quels domaines -->
+          <label for="domain" class="form-label"
+            >Dans quel(s) domaine(s) ?
+          </label>
+          <div class="mb-4" id="domain">
+            <div class="row">
+              <div class="btn-group mb-2" role="group">
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkboxDomain"
+                  name="checkboxDomain"
+                  value="Bureautique"
+                />
+                <label class="btn btn-outline-primary" for="checkboxDomain"
+                  >Bureautique</label
+                >
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkboxDomain2"
+                  name="checkboxDomain2"
+                  value="Programmation Informatique"
+                />
+                <label class="btn btn-outline-primary" for="checkboxDomain2"
+                  >Programmation Informatique</label
+                >
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkboxDomain3"
+                  name="checkboxDomain3"
+                  value="Bases de donées"
+                />
+                <label class="btn btn-outline-primary" for="checkboxDomain3"
+                  >Bases de donées</label
+                >
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkboxDomain4"
+                  name="checkboxDomain4"
+                  value="Design"
+                />
+                <label class="btn btn-outline-primary" for="checkboxDomain4"
+                  >Design</label
+                >
+              </div>
+
+              <div class="btn-group mb-2" role="group">
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkboxDomain5"
+                  name="checkboxDomain5"
+                  value="Digital"
+                />
+                <label class="btn btn-outline-primary" for="checkboxDomain5"
+                  >Digital</label
+                >
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkboxDomain6"
+                  name="checkboxDomain6"
+                  value="Marketing"
+                />
+                <label class="btn btn-outline-primary" for="checkboxDomain6"
+                  >Marketing</label
+                >
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkboxDomain7"
+                  name="checkboxDomain7"
+                  value="Automatisation"
+                />
+                <label class="btn btn-outline-primary" for="checkboxDomain7"
+                  >Automatisation</label
+                >
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkboxDomain8"
+                  name="checkboxDomain8"
+                  value="Intelligence Artificielle"
+                />
+                <label class="btn btn-outline-primary" for="checkboxDomain8"
+                  >Intelligence Artificielle</label
+                >
+              </div>
+
+              <div class="btn-group mb-2" role="group">
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkboxDomain9"
+                  name="checkboxDomain9"
+                  value="Audiovisuel"
+                />
+                <label class="btn btn-outline-primary" for="checkboxDomain9"
+                  >Audiovisuel</label
+                >
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkboxDomain10"
+                  name="checkboxDomain10"
+                  value="Réseaux Sociaux"
+                />
+                <label class="btn btn-outline-primary" for="checkboxDomain10"
+                  >Réseaux Sociaux</label
+                >
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkboxDomain11"
+                  name="checkboxDomain11"
+                  value="Communication"
+                />
+                <label class="btn btn-outline-primary" for="checkboxDomain11"
+                  >Communication</label
+                >
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkboxDomain12"
+                  name="checkboxDomain12"
+                  value="Création de site"
+                />
+                <label class="btn btn-outline-primary" for="checkboxDomain12"
+                  >Création de site (CMS)</label
+                >
+              </div>
+
+              <div class="btn-group mb-2" role="group">
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkboxDomain13"
+                  name="checkboxDomain13"
+                  value="Finance"
+                />
+                <label class="btn btn-outline-primary" for="checkboxDomain13"
+                  >Finance</label
+                >
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkboxDomain14"
+                  name="checkboxDomain14"
+                  value="Gestion de projet"
+                />
+                <label class="btn btn-outline-primary" for="checkboxDomain14"
+                  >Gestion de projet</label
+                >
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkboxDomain15"
+                  name="checkboxDomain15"
+                  value="Management"
+                />
+                <label class="btn btn-outline-primary" for="checkboxDomain15"
+                  >Management</label
+                >
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkboxDomain16"
+                  name="checkboxDomain16"
+                  value="Autre"
+                />
+                <label class="btn btn-outline-primary" for="checkboxDomain16"
+                  >Autre</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- option si programmation informatique -->
+          <div id="optionIfProgramming">
+            <label for="ifProgramming" class="form-label"
+              >Quel langage(s) de programmation :
+            </label>
+            <div class="mb-4" id="ifProgramming">
+              <div class="row">
+                <div class="btn-group mb-2" role="group">
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxProgramming"
+                    name="checkBoxProgramming"
+                    value="HTML"
+                  />
+                  <label
+                    class="btn btn-outline-primary"
+                    for="checkBoxProgramming"
+                    >HTML</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxProgramming2"
+                    name="checkBoxProgramming2"
+                    value="CSS"
+                  />
+                  <label
+                    class="btn btn-outline-primary"
+                    for="checkBoxProgramming2"
+                    >CSS</label
+                  >
+
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxProgramming3"
+                    name="checkBoxProgramming3"
+                    value="JavaScript"
+                  />
+                  <label
+                    class="btn btn-outline-primary"
+                    for="checkBoxProgramming3"
+                    >JavaScript</label
+                  >
+
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxProgramming4"
+                    name="checkBoxProgramming4"
+                    value="PHP"
+                  />
+                  <label
+                    class="btn btn-outline-primary"
+                    for="checkBoxProgramming4"
+                    >PHP</label
+                  >
+                </div>
+
+                <div class="btn-group mb-2" role="group">
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxProgramming5"
+                    name="checkBoxProgramming5"
+                    value="Python"
+                  />
+                  <label
+                    class="btn btn-outline-primary"
+                    for="checkBoxProgramming5"
+                    >Python</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxProgramming6"
+                    name="checkBoxProgramming6"
+                    value="COBOL"
+                  />
+                  <label
+                    class="btn btn-outline-primary"
+                    for="checkBoxProgramming6"
+                    >COBOL</label
+                  >
+
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxProgramming7"
+                    name="checkBoxProgramming"
+                    value="Autre"
+                  />
+                  <label
+                    class="btn btn-outline-primary"
+                    for="checkBoxProgramming7"
+                    >Autre</label
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- option si bases de donées -->
+          <div id="optionIfDatabase">
+            <label for="ifDatabase" class="form-label"
+              >Quelle(s) base(s) de donées :
+            </label>
+            <div class="mb-4" id="ifDatabase">
+              <div class="row">
+                <div class="btn-group mb-2" role="group">
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxDatabase"
+                    name="checkBoxDatabase"
+                    value="MySQL"
+                  />
+                  <label class="btn btn-outline-primary" for="checkBoxDatabase"
+                    >MySQL</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxDatabase2"
+                    name="checkBoxDatabase2"
+                    value="PostgreSQL"
+                  />
+                  <label class="btn btn-outline-primary" for="checkBoxDatabase2"
+                    >PostgreSQL</label
+                  >
+
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxDatabase3"
+                    name="checkBoxDatabase3"
+                    value="Oracle"
+                  />
+                  <label class="btn btn-outline-primary" for="checkBoxDatabase3"
+                    >Oracle</label
+                  >
+                </div>
+
+                <div class="btn-group mb-2" role="group">
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxDatabase4"
+                    name="checkBoxDatabase4"
+                    value="MongoDB"
+                  />
+                  <label class="btn btn-outline-primary" for="checkBoxDatabase4"
+                    >MongoDB</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxDatabase5"
+                    name="checkBoxDatabase5"
+                    value="Cassandra"
+                  />
+                  <label class="btn btn-outline-primary" for="checkBoxDatabase5"
+                    >Cassandra</label
+                  >
+
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxDatabase6"
+                    name="checkBoxDatabase6"
+                    value="Autre"
+                  />
+                  <label class="btn btn-outline-primary" for="checkBoxDatabase6"
+                    >Autre</label
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- option si reséaux sociaux -->
+          <div id="optionIfSocial">
+            <label for="ifSocial" class="form-label"
+              >Quel langage(s) de programmation :
+            </label>
+            <div class="mb-4" id="ifSocial">
+              <div class="row">
+                <div class="btn-group mb-2" role="group">
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxSocial"
+                    name="checkBoxSocial"
+                    value="Facebook"
+                  />
+                  <label class="btn btn-outline-primary" for="checkBoxSocial"
+                    >Facebook</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxSocial2"
+                    name="checkBoxSocial2"
+                    value="Instagram"
+                  />
+                  <label class="btn btn-outline-primary" for="checkBoxSocial2"
+                    >Instagram</label
+                  >
+
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxSocial3"
+                    name="checkBoxSocial3"
+                    value="X"
+                  />
+                  <label class="btn btn-outline-primary" for="checkBoxSocial3"
+                    >X (Twitter)</label
+                  >
+
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxSocial4"
+                    name="checkBoxSocial4"
+                    value="Snapchat"
+                  />
+                  <label class="btn btn-outline-primary" for="checkBoxSocial4"
+                    >Snapchat</label
+                  >
+                </div>
+
+                <div class="btn-group mb-2" role="group">
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxSocial5"
+                    name="checkBoxSocial5"
+                    value="TikTok"
+                  />
+                  <label class="btn btn-outline-primary" for="checkBoxSocial5"
+                    >TikTok</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxSocial6"
+                    name="checkBoxSocial6"
+                    value="Pinterest"
+                  />
+                  <label class="btn btn-outline-primary" for="checkBoxSocial6"
+                    >Pinterest</label
+                  >
+
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxSocial7"
+                    name="checkBoxSocial7"
+                    value="Youtube"
+                  />
+                  <label class="btn btn-outline-primary" for="checkBoxSocial7"
+                    >Youtube</label
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- option si autre souhait -->
+          <div class="mb-4" id="optionOtherOccupation">
+            <label for="other" class="form-label">
+              Préciser quelle autre demande
+            </label>
+            <input type="text" class="form-control" id="other" />
+          </div>
         </div>
 
-        <!-- checkbox rgpd 
-        <div class="form-check mb-4 mt-3">
-          <input
-            class="form-check-input me-2"
-            type="checkbox"
-            value="1"
-            id="rgpd"
-            checked
-          />
-          <label class="form-check-label" for="rgpd">
-            En soumettant ce formulaire, j’accepte que les informations saisies
-            soient traitées dans le cadre de la demande exprimée et de la
-            relation client qui peut en découler.
+        <!-- SECTION 4 -->
+        <div id="section4" class="">
+          <label for="typeWish" class="form-label"
+            >Type de formation souhaitée :
           </label>
-        </div>-->
+          <div class="mb-4" id="typeWish">
+            <div class="btn-group btn-group-lg" role="group">
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio4"
+                id="ourLocal"
+              />
+              <label
+                class="btn btn-outline-primary rounded-0 py-4"
+                for="ourLocal"
+                >Nos locaux (Cannes FR)</label
+              >
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio4"
+                id="remote"
+              />
+              <label class="btn btn-outline-primary p-4" for="remote"
+                >En distanciel (visio)</label
+              >
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio4"
+                id="hybride"
+              />
+              <label class="btn btn-outline-primary p-4" for="hybride"
+                >Hybride (présentiel et distanciel)</label
+              >
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio4"
+                id="yourLocal"
+              />
+              <label
+                class="btn btn-outline-primary rounded-0 p-4"
+                id="yourLocal"
+                for="yourLocal"
+                >Dans vos locaux</label
+              >
+            </div>
+          </div>
+
+          <!-- informations personnelles / de l'entreprise -->
+          <div class="mb-4" id="personalInformation">
+            <div class="row mb-4">
+              <div class="col-md-6">
+                <label for="lastName" class="form-label"> Nom </label>
+                <input type="text" class="form-control" id="lastName" />
+              </div>
+
+              <div class="col-md-6">
+                <label for="firstName" class="form-label"> Prénom </label>
+                <input type="text" class="form-control" id="firstName" />
+              </div>
+            </div>
+
+            <label for="email" class="form-label"> Email </label>
+            <input type="text" class="form-control mb-4" id="email" />
+
+            <div class="row mb-4">
+              <div class="mb-4 col-md-6">
+                <label for="city" class="form-label"> Ville </label>
+                <input type="text" class="form-control" id="city" />
+              </div>
+
+              <div class="col-md-6">
+                <label for="country" class="form-label"> Pays </label>
+                <input type="text" class="form-control" id="country" />
+              </div>
+            </div>
+          </div>
+
+          <!-- checkbox rgpd -->
+          <div class="form-check mb-4">
+            <input
+              class="form-check-input me-2"
+              type="checkbox"
+              value="1"
+              id="rgpdCheck"
+              role="button"
+            />
+            <label class="form-check-label" role="button" for="rgpdCheck">
+              En soumettant ce formulaire, j’accepte que les informations
+              saisies soient traitées dans le cadre de la demande exprimée et de
+              la relation client qui peut en découler.
+            </label>
+          </div>
+        </div>
+
+        <!-- next button -->
+        <div class="text-center">
+          <button
+            type="button"
+            id="nextStepTo"
+            class="btn btn-primary btn-lg mb-4"
+            data-step="1"
+          >
+            <div class="px-5 py-1">Suivant</div>
+          </button>
+        </div>
       </form>
     </div>
+    <script src="formulaire.js" type="text/javascript" defer></script>
   </body>
 </html>
