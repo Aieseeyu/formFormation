@@ -8,6 +8,12 @@
   display: none;
 }
 
+.logosWish {
+  height: 40%;
+}
+
+/* -------------------------------------------------------------------------- */
+
 /* #yourLocal {
   display: none;
 } */
@@ -92,7 +98,7 @@
 @media (max-width: 576px) {
   .flex-sm-nowrap .step .step-icon-wrap::before,
   .flex-sm-nowrap .step .step-icon-wrap::after {
-    display: none;
+    /* display: none; */
   }
 }
 
