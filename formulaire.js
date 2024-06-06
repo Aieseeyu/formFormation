@@ -4,32 +4,47 @@ $(document).ready(function () {
 
   // fonction pour le stepper d'en haut
   function stepper(step) {
-    // console.log();
+    helpers.step = step;
+
+    // on cache toutes les pages
     $(".section").hide();
+
+    // on montre que les bonnes pages
     $(".section" + step).show();
+
+    // on enleve la classe completed jusqu'a avant le step
     for (let index = 4; index > step; index--) {
       $(".step" + index).removeClass("completed");
     }
+    // on met la classe completed jusqu'au step inclus
     for (let index = 1; index <= step; index++) {
       $(".step" + index).addClass("completed");
     }
+
+    // sur la page 4 ca change le texte du button suivant
+    if (step == "4") {
+      $("#nextStepTo").html("Soumettre");
+    } else {
+      $("#nextStepTo").html("Suivant");
+    }
   }
 
+  // sur clique du step
   $(".step-icon").on("click", function () {
-    // alert($(this).text());
-    stepper($(this).text());
+    helpers.step = $(this).data("steptop");
+    stepper(helpers.step);
   });
 
   // pour afficher les pages suivantes
   $("#nextStepTo").on("click", function (e) {
     e.preventDefault();
 
-    helpers.step = $(this).data("step");
-    $(".section" + helpers.step).hide();
-    helpers.step++;
-    stepper(helpers.step);
-    $(".section" + helpers.step).show();
-    $(this).data("step", helpers.step);
+    if (helpers.step !== undefined) {
+      helpers.step++;
+      stepper(helpers.step);
+    } else {
+      stepper(2);
+    }
 
     return false;
   });
