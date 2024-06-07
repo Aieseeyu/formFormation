@@ -10,7 +10,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -87,7 +87,7 @@
             <label for="selectOccupation" class="form-label"
               >Quel statut avez vous?
             </label>
-            <select class="form-select" id="selectOccupation">
+            <select class="form-select selectOccupation" id="selectOccupation">
               <option selected>----</option>
               <option value="1">En recherche d'emploi</option>
               <option value="2">Entrepreneur Individuel</option>
@@ -100,19 +100,29 @@
           </div>
 
           <!-- option autre -->
-          <div class="mb-4 dispNone" id="option7">
+          <div class="mb-4 dispNone optionStatus7">
             <label for="other" class="form-label">
               Veuillez préciser votre statut
             </label>
-            <input type="text" class="form-control" id="other" />
+            <input
+              type="text"
+              class="form-control"
+              name="preciseStatus"
+              id="other"
+            />
           </div>
 
           <!-- option entreprise & entrepeneur individuel -->
-          <div class="mb-4 dispNone" id="option2">
+          <div class="mb-4 dispNone optionStatus2">
             <label for="bussinesName" class="form-label">
               Nom de l'entreprise
             </label>
-            <input type="text" class="form-control mb-4" id="bussinesName" />
+            <input
+              type="text"
+              class="form-control mb-4"
+              name="businessName"
+              id="bussinesName"
+            />
 
             <label for="bussinesActivity" class="form-label">
               Domaine d'activité
@@ -120,69 +130,67 @@
             <input
               type="text"
               class="form-control mb-4"
+              name="bussinesActivity"
               id="bussinesActivity"
             />
-
-            <!-- A ENLEVER VILLE PAYS ENTREPRISE -->
-            <!-- <div class="row mb-4">
-              <div class="mb-4 col-md-6">
-                <label for="city" class="form-label"> Ville </label>
-                <input type="text" class="form-control" id="city" />
-              </div>
-
-              <div class="col-md-6">
-                <label for="country" class="form-label"> Pays </label>
-                <input type="text" class="form-control" id="country" />
-              </div>
-            </div> -->
           </div>
 
           <!-- option etudiant -->
-          <div class="mb-4 dispNone" id="option5">
+          <div class="mb-4 dispNone optionStatus5">
             <label for="selectStudent" class="form-label"
               >Quel niveau d'étude avez vous ?
             </label>
-            <select
-              class="form-select"
-              id="selectStudent"
-              aria-label="Statut de la personne"
-            >
+            <select class="form-select" name="studentLevel" id="selectStudent">
               <option selected>----</option>
-              <option value="1">Collège</option>
-              <option value="2">Lycée</option>
-              <option value="3">CAP</option>
-              <option value="4">Apprentissage</option>
-              <option value="5">BAC +2</option>
-              <option value="6">BAC +3</option>
-              <option value="8">BAC +5</option>
-              <option value="9">Doctorat</option>
+              <option value="Collège">Collège</option>
+              <option value="Lycée">Lycée</option>
+              <option value="CAP">CAP</option>
+              <option value="Apprentissage">Apprentissage</option>
+              <option value="BAC +2">BAC +2</option>
+              <option value="BAC +3">BAC +3</option>
+              <option value="BAC +5">BAC +5</option>
+              <option value="Doctorat">Doctorat</option>
             </select>
           </div>
 
           <!-- option salarié -->
-          <div class="mb-4 dispNone" id="option3">
+          <div class="mb-4 dispNone optionStatus3">
             <label for="jobTitle" class="form-label">
               Intitulé du poste que vous occupez
             </label>
-            <input type="text" class="form-control mb-4" id="jobTitle" />
+            <input
+              type="text"
+              class="form-control mb-4"
+              name="jobTitle"
+              id="jobTitle"
+            />
           </div>
 
           <!-- option recherce d'emploi -->
-          <div class="mb-4 dispNone" id="option1">
+          <div class="mb-4 dispNone optionStatus1">
             <label for="jobSearch" class="form-label">
               Dans quel domaine recherchez vous un emploi ?
             </label>
-            <input type="text" class="form-control mb-4" id="jobSearch" />
+            <input
+              type="text"
+              class="form-control mb-4"
+              name="jobSearch"
+              id="jobSearch"
+            />
           </div>
 
           <!-- radio si salarié ou dirigeant entreprise -->
-          <div class="mb-4" id="option3">
+          <div class="mb-4 dispNone optionStatus4">
             <div class="mb-4" id="optionStatus">
-              <label for="selectSelfOrCollaborators" class="form-label"
+              <label for="selfOrNot" class="form-label"
                 >Votre demande concerne-t-elle vous-même ou vos collaborateurs?
               </label>
-              <select class="form-select" id="selectSelfOrCollaborators">
-                <option selected>----</option>
+              <select
+                class="selfOrNot form-select"
+                name="selfOrNot"
+                id="selfOrNot"
+              >
+                <option value="0" selected>----</option>
                 <option value="1">Moi-même</option>
                 <option value="2">Mes collaborateurs</option>
               </select>
@@ -193,11 +201,11 @@
         <!-- SECTION 2 -->
         <div class="section section2 dispNone">
           <!-- quel usage de l'ordinateur -->
-          <div class="mb-4" id="optionUsagePc">
+          <div class="mb-4 self dispNone" id="optionUsagePc">
             <label for="usageRate" class="form-label"
               >Quel est votre usage d'un ordinateur ?
             </label>
-            <select class="form-select" id="usageRate">
+            <select class="form-select" name="selfPcUsageRate" id="usageRate">
               <option selected>----</option>
               <option value="Rare">Rare</option>
               <option value="Ponctuel">Ponctuel</option>
@@ -207,244 +215,267 @@
           </div>
 
           <!-- quels logicies utilisés -->
-          <label for="softwareUse" class="form-label"
-            >Quels logiciels utilisez-vous ?
-          </label>
-          <div class="row d-flex justify-content-evenly mb-4" id="softwareUse">
-            <div class="col-md-4">
-              <div class="form-check m-1">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="Word"
-                  id="checkWord"
-                />
-                <label class="form-check-label" role="button" for="checkWord"
-                  >Word</label
-                >
+          <div class="self dispNone">
+            <label for="softwareUse" class="form-label"
+              >Quels logiciels utilisez-vous ?
+            </label>
+            <div
+              class="row d-flex justify-content-evenly mb-4"
+              id="softwareUse"
+            >
+              <div class="col-md-4">
+                <div class="form-check m-1">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="Word"
+                    name="softwares"
+                    id="checkWord"
+                  />
+                  <label class="form-check-label" role="button" for="checkWord"
+                    >Word</label
+                  >
+                </div>
+                <div class="form-check m-1">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="Excel"
+                    name="softwares"
+                    id="checkExcel"
+                  />
+                  <label class="form-check-label" role="button" for="checkExcel"
+                    >Excel</label
+                  >
+                </div>
+                <div class="form-check m-1">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="PowerPoint"
+                    name="softwares"
+                    id="checkPowerPoint"
+                  />
+                  <label
+                    class="form-check-label"
+                    role="button"
+                    for="checkPowerPoint"
+                  >
+                    PowerPoint
+                  </label>
+                </div>
+                <div class="form-check m-1">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="Outlook"
+                    name="softwares"
+                    id="checkOutlook"
+                  />
+                  <label
+                    class="form-check-label"
+                    role="button"
+                    for="checkOutlook"
+                  >
+                    Outlook
+                  </label>
+                </div>
               </div>
-              <div class="form-check m-1">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="Excel"
-                  id="checkExcel"
-                />
-                <label class="form-check-label" role="button" for="checkExcel"
-                  >Excel</label
-                >
-              </div>
-              <div class="form-check m-1">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="PowerPoint"
-                  id="checkPowerPoint"
-                />
-                <label
-                  class="form-check-label"
-                  role="button"
-                  for="checkPowerPoint"
-                >
-                  PowerPoint
-                </label>
-              </div>
-              <div class="form-check m-1">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="Outlook"
-                  id="checkOutlook"
-                />
-                <label
-                  class="form-check-label"
-                  role="button"
-                  for="checkOutlook"
-                >
-                  Outlook
-                </label>
-              </div>
-            </div>
 
-            <div class="col-md-4">
-              <div class="form-check m-1">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="Suite Office"
-                  id="checkSuiteOffice"
-                />
-                <label
-                  class="form-check-label"
-                  role="button"
-                  for="checkSuiteOffice"
-                >
-                  Suite Office
-                </label>
+              <div class="col-md-4">
+                <div class="form-check m-1">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="Suite Office"
+                    name="softwares"
+                    id="checkSuiteOffice"
+                  />
+                  <label
+                    class="form-check-label"
+                    role="button"
+                    for="checkSuiteOffice"
+                  >
+                    Suite Office
+                  </label>
+                </div>
+                <div class="form-check m-1">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="Google Drive"
+                    name="softwares"
+                    id="checkGoogleDrive"
+                  />
+                  <label
+                    class="form-check-label"
+                    role="button"
+                    for="checkGoogleDrive"
+                  >
+                    Google Drive
+                  </label>
+                </div>
+                <div class="form-check m-1">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="One Drive"
+                    name="softwares"
+                    id="checkOneDrive"
+                  />
+                  <label
+                    class="form-check-label"
+                    role="button"
+                    for="checkOneDrive"
+                  >
+                    One Drive
+                  </label>
+                </div>
+                <div class="form-check m-1">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="Canva"
+                    name="softwares"
+                    id="checkCanva"
+                  />
+                  <label
+                    class="form-check-label"
+                    role="button"
+                    for="checkCanva"
+                  >
+                    Canva
+                  </label>
+                </div>
               </div>
-              <div class="form-check m-1">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="Google Drive"
-                  id="checkGoogleDrive"
-                />
-                <label
-                  class="form-check-label"
-                  role="button"
-                  for="checkGoogleDrive"
-                >
-                  Google Drive
-                </label>
-              </div>
-              <div class="form-check m-1">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="One Drive"
-                  id="checkOneDrive"
-                />
-                <label
-                  class="form-check-label"
-                  role="button"
-                  for="checkOneDrive"
-                >
-                  One Drive
-                </label>
-              </div>
-              <div class="form-check m-1">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="Canva"
-                  id="checkCanva"
-                />
-                <label class="form-check-label" role="button" for="checkCanva">
-                  Canva
-                </label>
-              </div>
-            </div>
 
-            <div class="col-md-4">
-              <div class="form-check m-1">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="Photoshop"
-                  id="checkPhotoshop"
-                />
-                <label
-                  class="form-check-label"
-                  role="button"
-                  for="checkPhotoshop"
-                >
-                  Photoshop
-                </label>
-              </div>
-              <div class="form-check m-1">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="Premiere Pro"
-                  id="checkPremierePro"
-                />
-                <label
-                  class="form-check-label"
-                  role="button"
-                  for="checkPremierePro"
-                >
-                  Premiere Pro
-                </label>
-              </div>
-              <div class="form-check m-1">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="Suite Adobe"
-                  id="checkSuiteAdobe"
-                />
-                <label
-                  class="form-check-label"
-                  role="button"
-                  for="checkSuiteAdobe"
-                >
-                  Suite Adobe
-                </label>
-              </div>
-              <div class="form-check m-1">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="Illustrator"
-                  id="checkIllustrator"
-                />
-                <label
-                  class="form-check-label"
-                  role="button"
-                  for="checkIllustrator"
-                >
-                  Illustrator
-                </label>
+              <div class="col-md-4">
+                <div class="form-check m-1">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="Photoshop"
+                    name="softwares"
+                    id="checkPhotoshop"
+                  />
+                  <label
+                    class="form-check-label"
+                    role="button"
+                    for="checkPhotoshop"
+                  >
+                    Photoshop
+                  </label>
+                </div>
+                <div class="form-check m-1">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="Premiere Pro"
+                    name="softwares"
+                    id="checkPremierePro"
+                  />
+                  <label
+                    class="form-check-label"
+                    role="button"
+                    for="checkPremierePro"
+                  >
+                    Premiere Pro
+                  </label>
+                </div>
+                <div class="form-check m-1">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="Suite Adobe"
+                    name="softwares"
+                    id="checkSuiteAdobe"
+                  />
+                  <label
+                    class="form-check-label"
+                    role="button"
+                    for="checkSuiteAdobe"
+                  >
+                    Suite Adobe
+                  </label>
+                </div>
+                <div class="form-check m-1">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="Illustrator"
+                    name="softwares"
+                    id="checkIllustrator"
+                  />
+                  <label
+                    class="form-check-label"
+                    role="button"
+                    for="checkIllustrator"
+                  >
+                    Illustrator
+                  </label>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- quels outils pour s'aider -->
-          <label for="toolsUse" class="form-label"
-            >Quels outils informatiques utilisez-vous pour vous aider dans votre
-            travail ?
-          </label>
-          <div class="mb-4" id="toolsUse">
-            <div class="row">
-              <div class="btn-group flex-wrap" role="group">
-                <input
-                  type="checkbox"
-                  class="btn-check"
-                  id="checkBoxTools"
-                  name="checkBoxTools"
-                  value="Aucun"
-                />
-                <label class="btn btn-outline-primary" for="checkBoxTools"
-                  >Aucun</label
-                >
-                <input
-                  type="checkbox"
-                  class="btn-check"
-                  id="checkBoxTools2"
-                  name="checkBoxTools2"
-                  value="Logiciels"
-                />
-                <label class="btn btn-outline-primary" for="checkBoxTools2"
-                  >Logiciels</label
-                >
+          <div class="self dispNone">
+            <label for="toolsUse" class="form-label"
+              >Quels outils informatiques utilisez-vous pour vous aider dans
+              votre travail ?
+            </label>
+            <div class="mb-4" id="toolsUse">
+              <div class="row">
+                <div class="btn-group flex-wrap" role="group">
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxTools"
+                    name="checkBoxTools"
+                    value="Aucun"
+                  />
+                  <label class="btn btn-outline-primary" for="checkBoxTools"
+                    >Aucun</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxTools2"
+                    name="checkBoxTools"
+                    value="Logiciels"
+                  />
+                  <label class="btn btn-outline-primary" for="checkBoxTools2"
+                    >Logiciels</label
+                  >
 
-                <input
-                  type="checkbox"
-                  class="btn-check"
-                  id="checkBoxTools3"
-                  name="checkBoxTools3"
-                  value="Intelligence Artificielle"
-                />
-                <label class="btn btn-outline-primary" for="checkBoxTools3"
-                  >Intelligence Artificielle</label
-                >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxTools3"
+                    name="checkBoxTools"
+                    value="Intelligence Artificielle"
+                  />
+                  <label class="btn btn-outline-primary" for="checkBoxTools3"
+                    >Intelligence Artificielle</label
+                  >
 
-                <input
-                  type="checkbox"
-                  class="btn-check"
-                  id="checkBoxTools4"
-                  name="checkBoxTools4"
-                  value="Outils en ligne"
-                />
-                <label class="btn btn-outline-primary" for="checkBoxTools4"
-                  >Outils en ligne</label
-                >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="checkBoxTools4"
+                    name="checkBoxTools"
+                    value="Outils en ligne"
+                  />
+                  <label class="btn btn-outline-primary" for="checkBoxTools4"
+                    >Outils en ligne</label
+                  >
+                </div>
               </div>
             </div>
           </div>
 
           <!-- combien de collaborateurs numeric -->
-          <div class="mb-4">
+          <div class="mb-4 notSelf dispNone">
             <label for="numberCollaborators" class="form-label"
               >Nombre de collaborateurs concernés :
             </label>
@@ -458,104 +489,108 @@
           </div>
 
           <!-- option si les collaborateurs utilisent ou non un ordi -->
-          <div id="optionUseComputer">
-            <div class="mb-4" id="selectUseComputer">
-              <label for="useComputer" class="form-label"
-                >Utilisent-ils l'ordinateur dans le cadre de leur travail ?
-              </label>
-              <select class="form-select" id="useComputer">
-                <option selected>----</option>
-                <option value="Oui">Oui</option>
-                <option value="Non">Non</option>
-              </select>
-            </div>
+          <div
+            class="mb-4 optionUseComputer dispNone notSelf"
+            id="selectUseComputer"
+          >
+            <label for="useComputer" class="form-label"
+              >Utilisent-ils l'ordinateur dans le cadre de leur travail ?
+            </label>
+            <select class="form-select" name="notSelfUsagePc" id="useComputer">
+              <option selected>----</option>
+              <option value="Oui">Oui</option>
+              <option value="Non">Non</option>
+            </select>
           </div>
         </div>
 
         <!-- SECTION 3 -->
         <div class="section section3 dispNone">
           <!-- option souhait pour lui meme-->
-          <div id="optionWantToSelf">
-            <label for="wantTo" class="form-label">Vous souhaitez : </label>
-            <div class="mb-4" id="wantTo">
-              <div class="row">
-                <div class="btn-group flex-wrap" role="group">
-                  <input
-                    type="checkbox"
-                    class="btn-check"
-                    id="checkBoxWantTo"
-                    name="checkBoxWantTo"
-                    value="Plus efficace"
-                  />
-                  <label class="btn btn-outline-primary" for="checkBoxWantTo"
-                    >Être plus efficace</label
-                  >
-                  <input
-                    type="checkbox"
-                    class="btn-check"
-                    id="checkBoxWantTo2"
-                    name="checkBoxWantTo2"
-                    value="Monter en competences"
-                  />
-                  <label class="btn btn-outline-primary" for="checkBoxWantTo2"
-                    >Monter en compétences</label
-                  >
+          <div class="dispNone" id="optionWantToSelf">
+            <div class="self2">
+              <label for="wantTo" class="form-label">Vous souhaitez : </label>
+              <div class="mb-4" id="wantTo">
+                <div class="row">
+                  <div class="btn-group flex-wrap" role="group">
+                    <input
+                      type="checkbox"
+                      class="btn-check"
+                      id="checkBoxWantTo"
+                      name="checkBoxWantToSelf"
+                      value="Plus efficace"
+                    />
+                    <label class="btn btn-outline-primary" for="checkBoxWantTo"
+                      >Être plus efficace</label
+                    >
+                    <input
+                      type="checkbox"
+                      class="btn-check"
+                      id="checkBoxWantTo2"
+                      name="checkBoxWantToSelf"
+                      value="Monter en competences"
+                    />
+                    <label class="btn btn-outline-primary" for="checkBoxWantTo2"
+                      >Monter en compétences</label
+                    >
 
-                  <input
-                    type="checkbox"
-                    class="btn-check"
-                    id="checkBoxWantTo3"
-                    name="checkBoxWantTo3"
-                    value="Remise à niveau"
-                  />
-                  <label class="btn btn-outline-primary" for="checkBoxWantTo3"
-                    >Remise à niveau</label
-                  >
+                    <input
+                      type="checkbox"
+                      class="btn-check"
+                      id="checkBoxWantTo3"
+                      name="checkBoxWantToSelf"
+                      value="Remise à niveau"
+                    />
+                    <label class="btn btn-outline-primary" for="checkBoxWantTo3"
+                      >Remise à niveau</label
+                    >
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- option souhait pour collaborateurs-->
-          <div id="optionWantToCollaborators">
-            <label for="wantToCollborators" class="form-label"
-              >Votre demande concerne :
-            </label>
-            <div class="mb-4" id="wantToCollborators">
-              <div class="row">
-                <div class="btn-group flex-wrap" role="group">
-                  <input
-                    type="checkbox"
-                    class="btn-check"
-                    id="checkboxWantToCollaborators"
-                    name="checkboxWantToCollaborators"
-                    value="Une montée en compétences"
-                  />
-                  <label
-                    class="btn btn-outline-primary"
-                    for="checkboxWantToCollaborators"
-                    >Une montée en compétences</label
-                  >
+          <div class="dispNone" id="optionWantToCollaborators">
+            <div class="notSelf2">
+              <label for="wantToCollborators" class="form-label"
+                >Votre demande concerne :
+              </label>
+              <div class="mb-4" id="wantToCollborators">
+                <div class="row">
+                  <div class="btn-group flex-wrap" role="group">
+                    <input
+                      type="checkbox"
+                      class="btn-check"
+                      id="checkboxWantToCollaborators"
+                      name="checkboxWantToCollaborators"
+                      value="Une montée en compétences"
+                    />
+                    <label
+                      class="btn btn-outline-primary"
+                      for="checkboxWantToCollaborators"
+                      >Une montée en compétences</label
+                    >
 
-                  <input
-                    type="checkbox"
-                    class="btn-check"
-                    id="checkboxWantToCollaborators2"
-                    name="checkboxWantToCollaborators2"
-                    value="Une recherche de
+                    <input
+                      type="checkbox"
+                      class="btn-check"
+                      id="checkboxWantToCollaborators2"
+                      name="checkboxWantToCollaborators"
+                      value="Une recherche de
                     rentabilité"
-                  />
-                  <label
-                    class="btn btn-outline-primary"
-                    for="checkboxWantToCollaborators2"
-                    >Une recherche de rentabilité</label
-                  >
+                    />
+                    <label
+                      class="btn btn-outline-primary"
+                      for="checkboxWantToCollaborators2"
+                      >Une recherche de rentabilité</label
+                    >
 
-                  <!-- <input
+                    <!-- <input
                     type="checkbox"
                     class="btn-check"
                     id="checkboxWantToCollaborators3"
-                    name="checkboxWantToCollaborators3"
+                    name="checkboxWantToCollaborators"
                     value="Un recyclage de connaissances"
                   />
                   <label
@@ -564,31 +599,32 @@
                     >Un recyclage de connaissances</label
                   > -->
 
-                  <input
-                    type="checkbox"
-                    class="btn-check"
-                    id="checkboxWantToCollaborators4"
-                    name="checkboxWantToCollaborators4"
-                    value="Remise à niveau"
-                  />
-                  <label
-                    class="btn btn-outline-primary"
-                    for="checkboxWantToCollaborators4"
-                    >Remise à niveau</label
-                  >
+                    <input
+                      type="checkbox"
+                      class="btn-check"
+                      id="checkboxWantToCollaborators4"
+                      name="checkboxWantToCollaborators"
+                      value="Remise à niveau"
+                    />
+                    <label
+                      class="btn btn-outline-primary"
+                      for="checkboxWantToCollaborators4"
+                      >Remise à niveau</label
+                    >
 
-                  <input
-                    type="checkbox"
-                    class="btn-check"
-                    id="checkboxWantToCollaborators5"
-                    name="checkboxWantToCollaborators5"
-                    value="Du coaching"
-                  />
-                  <label
-                    class="btn btn-outline-primary"
-                    for="checkboxWantToCollaborators5"
-                    >Du coaching</label
-                  >
+                    <input
+                      type="checkbox"
+                      class="btn-check"
+                      id="checkboxWantToCollaborators5"
+                      name="checkboxWantToCollaborators"
+                      value="Du coaching"
+                    />
+                    <label
+                      class="btn btn-outline-primary"
+                      for="checkboxWantToCollaborators5"
+                      >Du coaching</label
+                    >
+                  </div>
                 </div>
               </div>
             </div>
@@ -596,7 +632,7 @@
 
           <!-- quels domaines -->
           <label for="domain" class="form-label"
-            >Dans quels domaines : (choix multiple)
+            >Dans quels domaines (choix multiple) :
           </label>
           <div class="row d-flex justify-content-evenly mb-4" id="domain">
             <div class="col-sm-6 col-md-3">
@@ -605,6 +641,7 @@
                   class="form-check-input"
                   type="checkbox"
                   value="Bureautique"
+                  name="domainWanted"
                   id="checkBureautique"
                 />
                 <label
@@ -619,6 +656,7 @@
                   class="form-check-input"
                   type="checkbox"
                   value="Programmation Informatique"
+                  name="domainWanted"
                   id="checkProgrammationInformatique"
                 />
                 <label
@@ -633,6 +671,7 @@
                   class="form-check-input"
                   type="checkbox"
                   value="Bases de données"
+                  name="domainWanted"
                   id="checkBdd"
                 />
                 <label class="form-check-label" role="button" for="checkBdd">
@@ -644,6 +683,7 @@
                   class="form-check-input"
                   type="checkbox"
                   value="Design"
+                  name="domainWanted"
                   id="checkDesign"
                 />
                 <label class="form-check-label" role="button" for="checkDesign">
@@ -658,6 +698,7 @@
                   class="form-check-input"
                   type="checkbox"
                   value="Digital"
+                  name="domainWanted"
                   id="checkDigital"
                 />
                 <label
@@ -673,6 +714,7 @@
                   class="form-check-input"
                   type="checkbox"
                   value="Marketing"
+                  name="domainWanted"
                   id="checkMarketing"
                 />
                 <label
@@ -688,6 +730,7 @@
                   class="form-check-input"
                   type="checkbox"
                   value="Automatisation"
+                  name="domainWanted"
                   id="checkAutomatisation"
                 />
                 <label
@@ -703,6 +746,7 @@
                   class="form-check-input"
                   type="checkbox"
                   value="Intelligence Artificielle"
+                  name="domainWanted"
                   id="checkIa"
                 />
                 <label class="form-check-label" role="button" for="checkIa">
@@ -717,6 +761,7 @@
                   class="form-check-input"
                   type="checkbox"
                   value="Audiovisuel"
+                  name="domainWanted"
                   id="checkAudiovisuel"
                 />
                 <label
@@ -732,6 +777,7 @@
                   class="form-check-input"
                   type="checkbox"
                   value="Réseaux Sociaux"
+                  name="domainWanted"
                   id="checkReseauxSociaux"
                 />
                 <label
@@ -747,6 +793,7 @@
                   class="form-check-input"
                   type="checkbox"
                   value="Communication"
+                  name="domainWanted"
                   id="checkCommunication"
                 />
                 <label
@@ -762,6 +809,7 @@
                   class="form-check-input"
                   type="checkbox"
                   value="CMS"
+                  name="domainWanted"
                   id="checkCms"
                 />
                 <label class="form-check-label" role="button" for="checkCms">
@@ -776,6 +824,7 @@
                   class="form-check-input"
                   type="checkbox"
                   value="Finance"
+                  name="domainWanted"
                   id="checkFinance"
                 />
                 <label
@@ -791,6 +840,7 @@
                   class="form-check-input"
                   type="checkbox"
                   value="Gestion de Projet"
+                  name="domainWanted"
                   id="checkGestionProjet"
                 />
                 <label
@@ -806,6 +856,7 @@
                   class="form-check-input"
                   type="checkbox"
                   value="Management"
+                  name="domainWanted"
                   id="checkManagement"
                 />
                 <label
@@ -821,6 +872,7 @@
                   class="form-check-input"
                   type="checkbox"
                   value="Autre"
+                  name="domainWanted"
                   id="checkAutre"
                 />
                 <label class="form-check-label" role="button" for="checkAutre">
@@ -831,9 +883,9 @@
           </div>
 
           <!-- option si programmation informatique -->
-          <div id="optionIfProgramming">
+          <div class="dispNone optionIfProgramming" id="optionIfProgramming ">
             <label for="ifProgramming" class="form-label"
-              >Quel langage(s) de programmation :
+              >Quel(s) langage(s) de programmation :
             </label>
             <div class="mb-4" id="ifProgramming">
               <div class="row">
@@ -854,7 +906,7 @@
                     type="checkbox"
                     class="btn-check"
                     id="checkBoxProgramming2"
-                    name="checkBoxProgramming2"
+                    name="checkBoxProgramming"
                     value="CSS"
                   />
                   <label
@@ -867,7 +919,7 @@
                     type="checkbox"
                     class="btn-check"
                     id="checkBoxProgramming3"
-                    name="checkBoxProgramming3"
+                    name="checkBoxProgramming"
                     value="JavaScript"
                   />
                   <label
@@ -880,7 +932,7 @@
                     type="checkbox"
                     class="btn-check"
                     id="checkBoxProgramming4"
-                    name="checkBoxProgramming4"
+                    name="checkBoxProgramming"
                     value="PHP"
                   />
                   <label
@@ -893,7 +945,7 @@
                     type="checkbox"
                     class="btn-check"
                     id="checkBoxProgramming5"
-                    name="checkBoxProgramming5"
+                    name="checkBoxProgramming"
                     value="Python"
                   />
                   <label
@@ -905,7 +957,7 @@
                     type="checkbox"
                     class="btn-check"
                     id="checkBoxProgramming6"
-                    name="checkBoxProgramming6"
+                    name="checkBoxProgramming"
                     value="COBOL"
                   />
                   <label
@@ -932,7 +984,7 @@
           </div>
 
           <!-- option si bases de donées -->
-          <div id="optionIfDatabase">
+          <div class="dispNone optionIfDatabase" id="optionIfDatabase ">
             <label for="ifDatabase" class="form-label"
               >Quelle(s) base(s) de donées :
             </label>
@@ -953,7 +1005,7 @@
                     type="checkbox"
                     class="btn-check"
                     id="checkBoxDatabase2"
-                    name="checkBoxDatabase2"
+                    name="checkBoxDatabase"
                     value="PostgreSQL"
                   />
                   <label class="btn btn-outline-primary" for="checkBoxDatabase2"
@@ -964,7 +1016,7 @@
                     type="checkbox"
                     class="btn-check"
                     id="checkBoxDatabase3"
-                    name="checkBoxDatabase3"
+                    name="checkBoxDatabase"
                     value="Oracle"
                   />
                   <label class="btn btn-outline-primary" for="checkBoxDatabase3"
@@ -975,7 +1027,7 @@
                     type="checkbox"
                     class="btn-check"
                     id="checkBoxDatabase4"
-                    name="checkBoxDatabase4"
+                    name="checkBoxDatabase"
                     value="MongoDB"
                   />
                   <label class="btn btn-outline-primary" for="checkBoxDatabase4"
@@ -985,7 +1037,7 @@
                     type="checkbox"
                     class="btn-check"
                     id="checkBoxDatabase5"
-                    name="checkBoxDatabase5"
+                    name="checkBoxDatabase"
                     value="Cassandra"
                   />
                   <label class="btn btn-outline-primary" for="checkBoxDatabase5"
@@ -996,7 +1048,7 @@
                     type="checkbox"
                     class="btn-check"
                     id="checkBoxDatabase6"
-                    name="checkBoxDatabase6"
+                    name="checkBoxDatabase"
                     value="Autre"
                   />
                   <label class="btn btn-outline-primary" for="checkBoxDatabase6"
@@ -1008,7 +1060,7 @@
           </div>
 
           <!-- option si reséaux sociaux -->
-          <div id="optionIfSocial">
+          <div class="dispNone optionIfSocial" id="optionIfSocial ">
             <label for="ifSocial" class="form-label"
               >Quels réseaux sociaux :
             </label>
@@ -1032,7 +1084,7 @@
                     type="checkbox"
                     class="btn-check"
                     id="checkBoxSocial2"
-                    name="checkBoxSocial2"
+                    name="checkBoxSocial"
                     value="Instagram"
                   />
                   <label class="btn btn-outline-primary" for="checkBoxSocial2"
@@ -1043,7 +1095,7 @@
                     type="checkbox"
                     class="btn-check"
                     id="checkBoxSocial3"
-                    name="checkBoxSocial3"
+                    name="checkBoxSocial"
                     value="X"
                   />
                   <label class="btn btn-outline-primary" for="checkBoxSocial3"
@@ -1054,7 +1106,7 @@
                     type="checkbox"
                     class="btn-check"
                     id="checkBoxSocial4"
-                    name="checkBoxSocial4"
+                    name="checkBoxSocial"
                     value="Snapchat"
                   />
                   <label class="btn btn-outline-primary" for="checkBoxSocial4"
@@ -1065,7 +1117,7 @@
                     type="checkbox"
                     class="btn-check"
                     id="checkBoxSocial5"
-                    name="checkBoxSocial5"
+                    name="checkBoxSocial"
                     value="TikTok"
                   />
                   <label class="btn btn-outline-primary" for="checkBoxSocial5"
@@ -1075,7 +1127,7 @@
                     type="checkbox"
                     class="btn-check"
                     id="checkBoxSocial6"
-                    name="checkBoxSocial6"
+                    name="checkBoxSocial"
                     value="Pinterest"
                   />
                   <label class="btn btn-outline-primary" for="checkBoxSocial6"
@@ -1086,7 +1138,7 @@
                     type="checkbox"
                     class="btn-check"
                     id="checkBoxSocial7"
-                    name="checkBoxSocial7"
+                    name="checkBoxSocial"
                     value="Youtube"
                   />
                   <label class="btn btn-outline-primary" for="checkBoxSocial7"
@@ -1098,11 +1150,19 @@
           </div>
 
           <!-- option si autre souhait -->
-          <div class="mb-4" id="optionOtherOccupation">
-            <label for="other" class="form-label">
+          <div
+            class="mb-4 dispNone optionOtherOccupation"
+            id="optionOtherOccupation"
+          >
+            <label for="otherWish" class="form-label">
               Préciser quelle autre demande
             </label>
-            <input type="text" class="form-control" id="other" />
+            <input
+              type="text"
+              class="form-control"
+              name="otherWish"
+              id="otherWish"
+            />
           </div>
         </div>
 
@@ -1225,11 +1285,11 @@
             class="btn btn-primary btn-lg mb-4"
             data-step="1"
           >
-            <div class="px-5 py-1">Suivant</div>
+            <div class="nextStepToText px-5 py-1">Suivant</div>
           </button>
         </div>
       </form>
     </div>
-    <script src="formulaire.js" type="text/javascript" defer></script>
+    <script src="js/formulaire.js" type="text/javascript" defer></script>
   </body>
 </html>
