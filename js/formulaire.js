@@ -34,6 +34,8 @@ $(document).ready(function () {
     } else {
       $("#nextStepToText").text("Suivant");
     }
+
+    // afficher les bons inputs sur les differens step/pages si c'est pour lui ou colaborateurs
     switch (step) {
       case 2:
         if (person.selfOrNot == "1") {
@@ -54,7 +56,15 @@ $(document).ready(function () {
           $(".notSelf2").parent().show();
         }
         break;
-      default:
+
+      case 4:
+        if (person.selfOrNot == "1") {
+          $(".notSelf3").hide();
+          $(".self3").show();
+        } else {
+          $(".self3").hide();
+          $(".notSelf3").show();
+        }
         break;
     }
   }
@@ -62,6 +72,15 @@ $(document).ready(function () {
   // sur clique du step
   $(".step-icon").on("click", function (e) {
     e.preventDefault();
+    // recuperer si la demande le concerne ou ses collaborateurs IL SERAIT PEUT ETRE MIEUX DE FAIRE UNE FONCTION?
+    if ($(".selfOrNot option:selected").val() == "0") {
+      // default
+      person.selfOrNot = 1;
+    } else {
+      person.selfOrNot = $(".selfOrNot option:selected").val();
+    }
+
+    // naviguer avec le stepper que si on a validé
     if (helpers.stepHistory >= $(this).data("steptop")) {
       helpers.step = $(this).data("steptop");
       stepper(helpers.step);
@@ -70,11 +89,11 @@ $(document).ready(function () {
     return false;
   });
 
-  // pour afficher les pages suivantes
+  // pour afficher cacher les pages sur le button suivant
   $("#nextStepTo").on("click", function (e) {
     e.preventDefault();
 
-    // recuperer si la demande le concerne ou ses collaborateurs
+    // recuperer si la demande le concerne ou ses collaborateurs IL SERAIT PEUT ETRE MIEUX DE FAIRE UNE FONCTION?
     if ($(".selfOrNot option:selected").val() == "0") {
       // default
       person.selfOrNot = 1;
@@ -82,7 +101,7 @@ $(document).ready(function () {
       person.selfOrNot = $(".selfOrNot option:selected").val();
     }
 
-    // pour afficher cacher les pages
+    // pour afficher cacher les pages sur le button suivant
     if (helpers.step !== undefined) {
       helpers.step++;
       stepper(helpers.step);
@@ -94,7 +113,7 @@ $(document).ready(function () {
   });
 
   // SECTION 1
-  // pour afficher les bons inputs sur le select
+  // pour afficher les bons inputs sur le premier select
   $(".selectOccupation").on("change", function () {
     person.selected = $(".selectOccupation option:selected").val();
     for (let index = 1; index <= 7; index++) {
@@ -108,8 +127,23 @@ $(document).ready(function () {
 
   // SECTION 2
 
+  // a ameliorer ?
+  $("#checkBoxTools").on("click", function () {
+    $("#checkBoxTools2").prop("checked", false);
+    $("#checkBoxTools3").prop("checked", false);
+    $("#checkBoxTools4").prop("checked", false);
+  });
+
+  $("#checkBoxTools2, #checkBoxTools3, #checkBoxTools4").on(
+    "click",
+    function () {
+      $("#checkBoxTools").prop("checked", false);
+    }
+  );
+
   // SECTION 3
 
+  // peut ameliorer? x4
   $("#checkProgrammationInformatique").on("change", function () {
     if ($("#checkProgrammationInformatique").is(":checked")) {
       $(".optionIfProgramming").show();
@@ -140,6 +174,18 @@ $(document).ready(function () {
       $(".optionOtherOccupation").show();
     } else {
       $(".optionOtherOccupation").hide();
+    }
+  });
+
+  // SECTION 4
+
+  $(".radio-tile-group").on("change", function () {
+    if ($("#yourLocal").is(":checked")) {
+      $(".residential").hide();
+      $(".notResidential").show();
+    } else {
+      $(".notResidential").hide();
+      $(".residential").show();
     }
   });
 });

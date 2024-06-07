@@ -424,52 +424,50 @@
               >Quels outils informatiques utilisez-vous pour vous aider dans
               votre travail ?
             </label>
-            <div class="mb-4" id="toolsUse">
-              <div class="row">
-                <div class="btn-group flex-wrap" role="group">
-                  <input
-                    type="checkbox"
-                    class="btn-check"
-                    id="checkBoxTools"
-                    name="checkBoxTools"
-                    value="Aucun"
-                  />
-                  <label class="btn btn-outline-primary" for="checkBoxTools"
-                    >Aucun</label
-                  >
-                  <input
-                    type="checkbox"
-                    class="btn-check"
-                    id="checkBoxTools2"
-                    name="checkBoxTools"
-                    value="Logiciels"
-                  />
-                  <label class="btn btn-outline-primary" for="checkBoxTools2"
-                    >Logiciels</label
-                  >
+            <div class="mb-4 row" id="toolsUse">
+              <div class="btn-group flex-wrap" role="group">
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkBoxTools"
+                  name="checkBoxTools"
+                  value="Aucun"
+                />
+                <label class="btn btn-outline-primary" for="checkBoxTools"
+                  >Aucun</label
+                >
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkBoxTools2"
+                  name="checkBoxTools"
+                  value="Logiciels"
+                />
+                <label class="btn btn-outline-primary" for="checkBoxTools2"
+                  >Logiciels</label
+                >
 
-                  <input
-                    type="checkbox"
-                    class="btn-check"
-                    id="checkBoxTools3"
-                    name="checkBoxTools"
-                    value="Intelligence Artificielle"
-                  />
-                  <label class="btn btn-outline-primary" for="checkBoxTools3"
-                    >Intelligence Artificielle</label
-                  >
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkBoxTools3"
+                  name="checkBoxTools"
+                  value="Intelligence Artificielle"
+                />
+                <label class="btn btn-outline-primary" for="checkBoxTools3"
+                  >Intelligence Artificielle</label
+                >
 
-                  <input
-                    type="checkbox"
-                    class="btn-check"
-                    id="checkBoxTools4"
-                    name="checkBoxTools"
-                    value="Outils en ligne"
-                  />
-                  <label class="btn btn-outline-primary" for="checkBoxTools4"
-                    >Outils en ligne</label
-                  >
-                </div>
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="checkBoxTools4"
+                  name="checkBoxTools"
+                  value="Outils en ligne"
+                />
+                <label class="btn btn-outline-primary" for="checkBoxTools4"
+                  >Outils en ligne</label
+                >
               </div>
             </div>
           </div>
@@ -1172,84 +1170,121 @@
           <label for="typeWish" class="form-label"
             >Type de formation souhaitée :
           </label>
-          <div class="mb-4 row" id="typeWish">
-            <input
-              type="radio"
-              class="btn-check"
-              name="btnradio4"
-              id="ourLocal"
-            />
-            <label
-              class="btn btn-outline-primary rounded py-4 col-sm mx-1"
-              for="ourLocal"
-              ><div class="mb-4">Dans nos locaux à Cannes (FR)</div>
-              <img src="img/home.png" class="logosWish mx-2" alt="" />
-            </label>
+          <div class="radio-tile-group mb-4" id="typeWish">
+            <div class="input-container">
+              <input
+                id="ourLocal"
+                class="radio-button"
+                type="radio"
+                name="typeWish"
+                value="1"
+              />
+              <div class="radio-tile">
+                <div class="icon walk-icon"></div>
+                <label for="ourLocal" class="radio-tile-label"
+                  >Dans nos locaux à Cannes (FR)</label
+                >
+              </div>
+            </div>
 
-            <input
-              type="radio"
-              class="btn-check"
-              name="btnradio4"
-              id="yourLocal"
-            />
-            <label
-              class="btn btn-outline-primary rounded p-4 col-sm mx-1"
-              id="yourLocal"
-              for="yourLocal"
-              ><div class="mb-4">Dans vos locaux</div>
-              <img src="img/location.png" class="logosWish mx-2" alt=""
-            /></label>
+            <div class="input-container notSelf3">
+              <input
+                id="yourLocal"
+                class="radio-button yourLocal"
+                type="radio"
+                name="typeWish"
+                value="2"
+              />
+              <div class="radio-tile">
+                <div class="icon bike-icon"></div>
+                <label for="yourLocal" class="radio-tile-label"
+                  >Dans vos locaux</label
+                >
+              </div>
+            </div>
 
-            <input
-              type="radio"
-              class="btn-check"
-              name="btnradio4"
-              id="remote"
-            />
-            <label
-              class="btn btn-outline-primary rounded p-4 col-sm mx-1"
-              for="remote"
-              ><div class="mb-4">En distanciel (visioconférence)</div>
-              <img src="img/video-call.png" class="logosWish mx-2" alt=""
-            /></label>
+            <div class="input-container">
+              <input
+                id="remote"
+                class="radio-button"
+                type="radio"
+                name="typeWish"
+                value="3"
+              />
+              <div class="radio-tile">
+                <div class="icon car-icon"></div>
+                <label for="remote" class="radio-tile-label"
+                  >Distanciel (Visio)</label
+                >
+              </div>
+            </div>
 
-            <input
-              type="radio"
-              class="btn-check"
-              name="btnradio4"
-              id="hybride"
-            />
-            <label
-              class="btn btn-outline-primary rounded p-4 col-sm mx-1"
-              for="hybride"
-              ><div class="mb-4">Hybride (présentiel et distanciel)</div>
-              <img src="img/worker.png" class="logosWish mx-2" alt=""
-            /></label>
+            <div class="input-container">
+              <input
+                id="hybride"
+                class="radio-button"
+                type="radio"
+                name="typeWish"
+                value="4"
+              />
+              <div class="radio-tile">
+                <div class="icon fly-icon"></div>
+                <label for="hybride" class="radio-tile-label"
+                  >Hybride (présentiel et distanciel)
+                </label>
+              </div>
+            </div>
           </div>
 
           <!-- informations personnelles / de l'entreprise -->
           <div class="mb-4" id="personalInformation">
-            <div class="row mb-4">
-              <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-6 nomPrenomMargin">
                 <label for="lastName" class="form-label"> Nom </label>
                 <input type="text" class="form-control" id="lastName" />
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-6 nomPrenomMargin">
                 <label for="firstName" class="form-label"> Prénom </label>
                 <input type="text" class="form-control" id="firstName" />
               </div>
             </div>
 
-            <div class="row mb-4">
-              <div class="mb-4 col-md-6">
-                <label for="city" class="form-label"> Ville </label>
-                <input type="text" class="form-control" id="city" />
+            <div class="row">
+              <div class="col-md-6 residential villeMargin">
+                <label for="cityResidence" class="form-label"> Ville</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="cityResidence"
+                  id="cityResidence"
+                />
               </div>
 
-              <div class="col-md-6">
-                <label for="country" class="form-label"> Pays </label>
-                <input type="text" class="form-control" id="country" />
+              <div class="col-md-6 residential">
+                <label for="countryResidence" class="form-label"> Pays</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="countryResidence"
+                  id="countryResidence"
+                />
+              </div>
+            </div>
+
+            <div class="row mb-4">
+              <div class="col-md-6 dispNone notResidential villeMargin">
+                <label for="cityBusiness" class="form-label">
+                  Ville de vos locaux</label
+                >
+                <input type="text" class="form-control" id="cityBusiness" />
+              </div>
+
+              <div class="col-md-6 dispNone notResidential">
+                <label for="countryBusiness" class="form-label">
+                  Pays de vos locaux</label
+                >
+                <input type="text" class="form-control" id="countryBusiness" />
               </div>
             </div>
           </div>
