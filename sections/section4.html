@@ -1,0 +1,136 @@
+<!-- type de formtation (a distance ou local etc) -->
+<label for="typeWish" class="form-label">Type de formation souhaitée : </label>
+<div class="radio-tile-group mb-4" id="typeWish">
+  <div class="input-container">
+    <input
+      id="ourLocal"
+      class="radio-button"
+      type="radio"
+      name="typeWish"
+      value="1"
+    />
+    <div class="radio-tile">
+      <div class="icon walk-icon"></div>
+      <label for="ourLocal" class="radio-tile-label"
+        >Dans nos locaux à Cannes (FR)</label
+      >
+    </div>
+  </div>
+
+  <div class="input-container notSelf3 dispNone">
+    <input
+      id="yourLocal"
+      class="radio-button yourLocal"
+      type="radio"
+      name="typeWish"
+      value="2"
+    />
+    <div class="radio-tile">
+      <div class="icon bike-icon"></div>
+      <label for="yourLocal" class="radio-tile-label">Dans vos locaux</label>
+    </div>
+  </div>
+
+  <div class="input-container">
+    <input
+      id="remote"
+      class="radio-button"
+      type="radio"
+      name="typeWish"
+      value="3"
+    />
+    <div class="radio-tile">
+      <div class="icon car-icon"></div>
+      <label for="remote" class="radio-tile-label">Distanciel (Visio)</label>
+    </div>
+  </div>
+
+  <div class="input-container">
+    <input
+      id="hybride"
+      class="radio-button"
+      type="radio"
+      name="typeWish"
+      value="4"
+    />
+    <div class="radio-tile">
+      <div class="icon fly-icon"></div>
+      <label for="hybride" class="radio-tile-label"
+        >Hybride (présentiel et distanciel)
+      </label>
+    </div>
+  </div>
+</div>
+
+<!-- informations personnelles / de l'entreprise -->
+<div class="mb-4" id="personalInformation">
+  <div class="row">
+    <div class="col-md-6 nomPrenomMargin">
+      <label for="lastName" class="form-label"> Nom </label>
+      <input type="text" class="form-control" id="lastName" />
+    </div>
+
+    <div class="col-md-6 nomPrenomMargin">
+      <label for="firstName" class="form-label"> Prénom </label>
+      <input type="text" class="form-control" id="firstName" />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 residential villeMargin">
+      <label for="cityResidence" class="form-label"> Ville</label>
+      <input
+        type="text"
+        class="form-control"
+        name="cityResidence"
+        id="cityResidence"
+      />
+    </div>
+
+    <div class="col-md-6 residential">
+      <label for="countryResidence" class="form-label"> Pays</label>
+      <input
+        type="text"
+        class="form-control"
+        name="countryResidence"
+        id="countryResidence"
+      />
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-6 dispNone notResidential villeMargin">
+      <label for="cityBusiness" class="form-label"> Ville de vos locaux</label>
+      <input type="text" class="form-control" id="cityBusiness" />
+    </div>
+
+    <div class="col-md-6 dispNone notResidential">
+      <label for="countryBusiness" class="form-label">
+        Pays de vos locaux</label
+      >
+      <input type="text" class="form-control" id="countryBusiness" />
+    </div>
+  </div>
+</div>
+
+<label for="email" class="form-label"> Email </label>
+<input type="text" class="form-control mb-4" id="email" />
+
+<label for="phoneNumber" class="form-label"> Téléphone </label>
+<input type="text" class="form-control mb-4" id="phoneNumber" />
+
+<!-- checkbox rgpd -->
+<div class="form-check mb-4">
+  <input
+    class="form-check-input me-2"
+    type="checkbox"
+    value="1"
+    id="rgpdCheck"
+    role="button"
+  />
+  <label class="form-check-label" role="button" for="rgpdCheck">
+    En soumettant ce formulaire, j’accepte que les informations saisies soient
+    traitées dans le cadre de la demande exprimée et de la relation client qui
+    peut en découler.
+  </label>
+</div>

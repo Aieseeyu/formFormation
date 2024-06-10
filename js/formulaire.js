@@ -11,6 +11,25 @@ $(document).ready(function () {
     // pour empecher d'avancer trop sur les etapes sans passer le suivant
     if (helpers.stepHistory < step) {
       helpers.stepHistory = step;
+
+      if ($(".section" + helpers.stepHistory).is(":empty")) {
+        $.ajax({
+          url: "sections.php",
+          method: "POST",
+          dataType: "html",
+          async: false,
+          data: helpers,
+        })
+          .done(function (response) {
+            $(".section" + helpers.stepHistory).html(response);
+          })
+          .fail(function (error) {
+            console.log(
+              "La requête s'est terminée en échec. Infos : " +
+                JSON.stringify(error)
+            );
+          });
+      }
     }
 
     // on cache toutes les pages
@@ -145,6 +164,7 @@ $(document).ready(function () {
 
   // peut ameliorer? x4
   $("#checkProgrammationInformatique").on("change", function () {
+    console.log("ssss");
     if ($("#checkProgrammationInformatique").is(":checked")) {
       $(".optionIfProgramming").show();
     } else {
