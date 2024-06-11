@@ -78,19 +78,6 @@
             >Une recherche de rentabilité</label
           >
 
-          <!-- <input
-                    type="checkbox"
-                    class="btn-check"
-                    id="checkboxWantToCollaborators3"
-                    name="checkboxWantToCollaborators"
-                    value="Un recyclage de connaissances"
-                  />
-                  <label
-                    class="btn btn-outline-primary"
-                    for="checkboxWantToCollaborators3"
-                    >Un recyclage de connaissances</label
-                  > -->
-
           <input
             type="checkbox"
             class="btn-check"
@@ -590,3 +577,40 @@
   </label>
   <input type="text" class="form-control" name="otherWish" id="otherWish" />
 </div>
+
+<script>
+  $("#checkProgrammationInformatique").on("change", function () {
+    if ($("#checkProgrammationInformatique").is(":checked")) {
+      $(".optionIfProgramming").show();
+      $("#ifProgramming .btn-check:first-child").prop("required", true);
+    } else {
+      $(".optionIfProgramming").hide();
+      $("#ifProgramming .btn-check:first-child").prop("required", false);
+    }
+  });
+
+  $("#checkBdd").on("change", function () {
+    if ($("#checkBdd").is(":checked")) {
+      $(".optionIfDatabase").show();
+    } else {
+      $(".optionIfDatabase").hide();
+    }
+  });
+
+  $("#checkReseauxSociaux").on("change", function () {
+    if ($("#checkReseauxSociaux").is(":checked")) {
+      $(".optionIfSocial").show();
+    } else {
+      $(".optionIfSocial").hide();
+    }
+  });
+
+  $("#checkAutre").on("change", function () {
+    console.log($("#checkAutre").is(":checked"));
+    if ($("#checkAutre").is(":checked")) {
+      $(".optionOtherOccupation").show();
+    } else {
+      $(".optionOtherOccupation").hide();
+    }
+  });
+</script>

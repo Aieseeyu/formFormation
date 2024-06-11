@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <!-- Chargement de jQuery 3.7.1 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Chargement de jQuery Validate 1.19.5 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <form id="formulaire">
+        <div class="form-group">
+          <label for="selectOccupation">Occupation</label>
+          <input
+            type="text"
+            class="form-control"
+            id="selectOccupation"
+            name="selectOccupation"
+          />
+        </div>
+        <div class="form-group">
+          <label for="preciseStatus">Status</label>
+          <input
+            type="text"
+            class="form-control"
+            id="preciseStatus"
+            name="preciseStatus"
+          />
+        </div>
+        <div class="form-group">
+          <label for="businessName">Business Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="businessName"
+            name="businessName"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $("#formulaire").validate({
+          // Specify validation rules
+          rules: {
+            // The key name on the left side is the name attribute
+            // of an input field. Validation rules are defined
+            // on the right side
+            selectOccupation: "required",
+            preciseStatus: "required",
+            businessName: "required",
+          },
+          // Specify validation error messages
+          messages: {
+            selectOccupation: "Please enter your occupation",
+            preciseStatus: "Please enter your status",
+            businessName: "Please enter a valid business name",
+          },
+          // Make sure the form is submitted to the destination defined
+          // in the "action" attribute of the form when valid
+          submitHandler: function (form) {
+            console.log("Form validated successfully");
+            // form.submit(); // Uncomment to actually submit the form
+            return false;
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
