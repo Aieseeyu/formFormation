@@ -150,3 +150,17 @@
     peut en découler.
   </label>
 </div>
+
+<script>
+  $(".radio-tile-group").on("change", function () {
+    if ($("#yourLocal").is(":checked")) {
+      $(".residential").hide();
+      $(".notResidential").show();
+    } else {
+      $(".notResidential").hide();
+      $(".residential").show();
+    }
+  });
+
+  checkBtnGroupColor();
+</script>

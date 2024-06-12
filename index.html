@@ -76,6 +76,10 @@
           </div>
         </div>
 
+        <div class="mb-4">
+          <ul class="text-danger" id="errorBox"></ul>
+        </div>
+
         <!-- SECTION 1 -->
         <div class="section section1">
           <!-- 1ere question STATUT -->
@@ -89,7 +93,7 @@
               id="selectOccupation"
               required
             >
-              <option selected>----</option>
+              <option hidden disabled selected>----</option>
               <option value="1">En recherche d'emploi</option>
               <option value="2">Entrepreneur Individuel</option>
               <option value="2">Dirigeant</option>
@@ -193,7 +197,7 @@
                 name="selfOrNot"
                 id="selfOrNot"
               >
-                <option value="0" selected>----</option>
+                <option value="0" hidden disabled selected>----</option>
                 <option value="1">Moi-même</option>
                 <option value="2">Mes collaborateurs</option>
               </select>
@@ -233,5 +237,33 @@
       type="text/javascript"
     ></script>
     <script src="js/formulaire.js" type="text/javascript" defer></script>
+    <script>
+      function checkBtnGroupColor() {
+        $(".checkBoxBtn").on("change", function () {
+          //si un des boutons est check
+          if ($("input.checkBoxBtn:checked:visible").length) {
+            //si le bouton est rouge de base
+            $(".btn-outline-danger:visible")
+              .removeClass("btn-outline-danger")
+              .addClass("btn-outline-success");
+
+            //si le bouton est bleu de base
+            $(".btn-outline-primary:visible")
+              .removeClass("btn-outline-primary")
+              .addClass("btn-outline-success");
+
+            //si aucun des boutons est check on repasse en bleu
+          } else {
+            $(".btn-outline-danger:visible")
+              .removeClass("btn-outline-danger")
+              .addClass("btn-outline-primary");
+            $(".btn-outline-success:visible")
+              .removeClass("btn-outline-success")
+              .addClass("btn-outline-primary");
+          }
+        });
+      }
+      function checkNormal() {}
+    </script>
   </body>
 </html>

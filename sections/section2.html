@@ -4,7 +4,7 @@
     >Quel est votre usage d'un ordinateur ?
   </label>
   <select class="form-select" name="selfPcUsageRate" id="usageRate">
-    <option selected>----</option>
+    <option hidden disabled selected>----</option>
     <option value="Rare">Rare</option>
     <option value="Ponctuel">Ponctuel</option>
     <option value="Régulier">Régulier</option>
@@ -22,7 +22,7 @@
     <div class="btn-group flex-wrap" role="group">
       <input
         type="checkbox"
-        class="btn-check"
+        class="btn-check checkBoxBtn"
         id="checkBoxTools"
         name="checkBoxTools"
         value="Aucun"
@@ -30,7 +30,7 @@
       <label class="btn btn-outline-primary" for="checkBoxTools">Aucun</label>
       <input
         type="checkbox"
-        class="btn-check"
+        class="btn-check checkBoxBtn"
         id="checkBoxTools2"
         name="checkBoxTools"
         value="Logiciels"
@@ -41,7 +41,7 @@
 
       <input
         type="checkbox"
-        class="btn-check"
+        class="btn-check checkBoxBtn"
         id="checkBoxTools3"
         name="checkBoxTools"
         value="Intelligence Artificielle"
@@ -52,7 +52,7 @@
 
       <input
         type="checkbox"
-        class="btn-check"
+        class="btn-check checkBoxBtn"
         id="checkBoxTools4"
         name="checkBoxTools"
         value="Outils en ligne"
@@ -250,3 +250,43 @@
     <option value="Non">Non</option>
   </select>
 </div>
+
+<script>
+  $("#checkBoxTools").on("click", function () {
+    $("#checkBoxTools2").prop("checked", false);
+    $("#checkBoxTools3").prop("checked", false);
+    $("#checkBoxTools4").prop("checked", false);
+  });
+
+  $("#checkBoxTools2, #checkBoxTools3, #checkBoxTools4").on(
+    "click",
+    function () {
+      $("#checkBoxTools").prop("checked", false);
+    }
+  );
+
+  checkBtnGroupColor();
+</script>
+<!-- $(".checkBoxTools").on("change", function () {
+  //si un des boutons est check
+  if ($("input.checkBoxTools:checked").length) {
+    //si le bouton est rouge de base
+    $(".btn-outline-danger:visible")
+      .removeClass("btn-outline-danger")
+      .addClass("btn-outline-success");
+
+    //si le bouton est bleu de base
+    $(".btn-outline-primary:visible")
+      .removeClass("btn-outline-primary")
+      .addClass("btn-outline-success");
+
+    //si aucun des boutons est check on repasse en bleu
+  } else {
+    $(".btn-outline-danger:visible")
+      .removeClass("btn-outline-danger")
+      .addClass("btn-outline-primary");
+    $(".btn-outline-success:visible")
+      .removeClass("btn-outline-success")
+      .addClass("btn-outline-primary");
+  }
+}); -->
