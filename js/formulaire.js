@@ -208,33 +208,51 @@ $(document).ready(function () {
       phoneNumber: "Veuillez renseigner votre numéro de téléphone",
       rgpdCheck: "Veuillez accepter les conditions",
     },
+    errorPlacement: function (error, element) {
+      if ($(element).prop("class") == "form-check-input") {
+        console.log("form-check-input");
+      }
+    },
     submitHandler: function (form) {
-      // recuperer si la demande le concerne ou ses collaborateurs IL SERAIT PEUT ETRE MIEUX DE FAIRE UNE FONCTION?
-      if ($(".selfOrNot option:selected").val() == "0") {
-        // default
-        person.selfOrNot = 1;
-      } else {
-        person.selfOrNot = $(".selfOrNot option:selected").val();
-      }
+      if (!(helpers.step == 4)) {
+        // recuperer si la demande le concerne ou ses collaborateurs IL SERAIT PEUT ETRE MIEUX DE FAIRE UNE FONCTION?
+        if ($(".selfOrNot option:selected").val() == "0") {
+          // default
+          person.selfOrNot = 1;
+        } else {
+          person.selfOrNot = $(".selfOrNot option:selected").val();
+        }
 
-      // pour afficher cacher les pages sur le button suivant
-      if (helpers.step !== undefined) {
-        helpers.step++;
-        stepper(helpers.step);
+        // pour afficher cacher les pages sur le button suivant
+        if (helpers.step !== undefined) {
+          helpers.step++;
+          stepper(helpers.step);
+        } else {
+          stepper(2);
+        }
+        formBackToTop();
       } else {
-        stepper(2);
+        console.log($("form").serializeArray());
       }
-      formBackToTop();
 
       return false; /* required to block normal submit since you used ajax */
     },
-    invalidHandler: function (validator, event) {
+    invalidHandler: function (event, validator) {
       formBackToTop();
 
       // pour tous les boutons group si invalid passe en rouge, le vert se fait dans le script de chaque section
       $(".btn-outline-primary:visible")
         .removeClass("btn-outline-primary")
         .addClass("btn-outline-danger");
+
+      if (!$(".checkClassic:checked:visible").length) {
+        $(".checkClassic:visible").addClass("is-invalid");
+      }
+
+      // pour le type formation, on change la variable css pour faciliter le changement de couleurs
+      if (!$(".radio-button").is(":checked")) {
+        $("body").get(0).style.setProperty("--radioTile-color", "#dc3545");
+      }
     },
   });
 

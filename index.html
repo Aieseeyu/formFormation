@@ -240,30 +240,63 @@
     <script>
       function checkBtnGroupColor() {
         $(".checkBoxBtn").on("change", function () {
+          let name = $(this).prop("name");
           //si un des boutons est check
-          if ($("input.checkBoxBtn:checked:visible").length) {
-            //si le bouton est rouge de base
-            $(".btn-outline-danger:visible")
-              .removeClass("btn-outline-danger")
-              .addClass("btn-outline-success");
+          if ($("input[name='" + name + "']:checked:visible").length) {
+            //alert($("input[name='" + name + "'] + label").length);
 
-            //si le bouton est bleu de base
-            $(".btn-outline-primary:visible")
-              .removeClass("btn-outline-primary")
-              .addClass("btn-outline-success");
+            $("input[name='" + name + "']").prop(
+              "class",
+              "btn-check checkBoxBtn btn-outline-success"
+            );
 
-            //si aucun des boutons est check on repasse en bleu
+            $("input[name='" + name + "']  + label").prop(
+              "class",
+              "btn btn-outline-success"
+            );
           } else {
-            $(".btn-outline-danger:visible")
-              .removeClass("btn-outline-danger")
-              .addClass("btn-outline-primary");
-            $(".btn-outline-success:visible")
-              .removeClass("btn-outline-success")
-              .addClass("btn-outline-primary");
+            $("input[name='" + name + "']").prop(
+              "class",
+              "btn-check checkBoxBtn btn-outline-danger"
+            );
+
+            $("input[name='" + name + "']  + label").prop(
+              "class",
+              "btn btn-outline-danger"
+            );
           }
         });
       }
-      function checkNormal() {}
+
+      function checkClassicGroupColor() {
+        $(".checkClassic").on("change", function () {
+          let name = $(this).prop("name");
+          //si un des boutons est check
+          if ($("input[name='" + name + "']:checked:visible").length) {
+            //alert($("input[name='" + name + "'] + label").length);
+
+            $("input[name='" + name + "']").prop(
+              "class",
+              "form-check-input checkClassic is-valid"
+            );
+
+            $("input[name='" + name + "']  + label").prop(
+              "class",
+              "form-check-label is-valid"
+            );
+          } else {
+            $("input[name='" + name + "']").prop(
+              "class",
+              "form-check-input checkClassic is-invalid"
+            );
+
+            $("input[name='" + name + "']  + label").prop(
+              "class",
+              "form-check-label is-invalid"
+            );
+          }
+        });
+      }
     </script>
   </body>
 </html>

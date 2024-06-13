@@ -69,11 +69,12 @@
   <label for="softwareUse" class="form-label"
     >Quels logiciels utilisez-vous ?
   </label>
+
   <div class="row d-flex justify-content-evenly mb-4" id="softwareUse">
     <div class="col-md-4">
       <div class="form-check m-1">
         <input
-          class="form-check-input"
+          class="form-check-input checkClassic"
           type="checkbox"
           value="Word"
           name="softwares"
@@ -85,7 +86,7 @@
       </div>
       <div class="form-check m-1">
         <input
-          class="form-check-input"
+          class="form-check-input checkClassic"
           type="checkbox"
           value="Excel"
           name="softwares"
@@ -97,7 +98,7 @@
       </div>
       <div class="form-check m-1">
         <input
-          class="form-check-input"
+          class="form-check-input checkClassic"
           type="checkbox"
           value="PowerPoint"
           name="softwares"
@@ -109,7 +110,7 @@
       </div>
       <div class="form-check m-1">
         <input
-          class="form-check-input"
+          class="form-check-input checkClassic"
           type="checkbox"
           value="Outlook"
           name="softwares"
@@ -124,7 +125,7 @@
     <div class="col-md-4">
       <div class="form-check m-1">
         <input
-          class="form-check-input"
+          class="form-check-input checkClassic"
           type="checkbox"
           value="Suite Office"
           name="softwares"
@@ -136,7 +137,7 @@
       </div>
       <div class="form-check m-1">
         <input
-          class="form-check-input"
+          class="form-check-input checkClassic"
           type="checkbox"
           value="Google Drive"
           name="softwares"
@@ -148,7 +149,7 @@
       </div>
       <div class="form-check m-1">
         <input
-          class="form-check-input"
+          class="form-check-input checkClassic"
           type="checkbox"
           value="One Drive"
           name="softwares"
@@ -160,7 +161,7 @@
       </div>
       <div class="form-check m-1">
         <input
-          class="form-check-input"
+          class="form-check-input checkClassic"
           type="checkbox"
           value="Canva"
           name="softwares"
@@ -175,7 +176,7 @@
     <div class="col-md-4">
       <div class="form-check m-1">
         <input
-          class="form-check-input"
+          class="form-check-input checkClassic"
           type="checkbox"
           value="Photoshop"
           name="softwares"
@@ -187,7 +188,7 @@
       </div>
       <div class="form-check m-1">
         <input
-          class="form-check-input"
+          class="form-check-input checkClassic"
           type="checkbox"
           value="Premiere Pro"
           name="softwares"
@@ -199,7 +200,7 @@
       </div>
       <div class="form-check m-1">
         <input
-          class="form-check-input"
+          class="form-check-input checkClassic"
           type="checkbox"
           value="Suite Adobe"
           name="softwares"
@@ -211,7 +212,7 @@
       </div>
       <div class="form-check m-1">
         <input
-          class="form-check-input"
+          class="form-check-input checkClassic"
           type="checkbox"
           value="Illustrator"
           name="softwares"
@@ -245,7 +246,7 @@
     >Utilisent-ils l'ordinateur dans le cadre de leur travail ?
   </label>
   <select class="form-select" name="notSelfUsagePc" id="useComputer">
-    <option selected>----</option>
+    <option hidden disabled selected>----</option>
     <option value="Oui">Oui</option>
     <option value="Non">Non</option>
   </select>
@@ -266,6 +267,7 @@
   );
 
   checkBtnGroupColor();
+  checkClassicGroupColor();
 </script>
 <!-- $(".checkBoxTools").on("change", function () {
   //si un des boutons est check

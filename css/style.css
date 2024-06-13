@@ -1,7 +1,9 @@
 :root {
   --blue: #1e90ff;
   --white: #ffffff;
-  --primary-color: #0d6efd;
+  --radioTile-color: #0d6efd;
+  /* --danger-color: #dc3545;
+  --success-color: #198754; */
 }
 
 @media screen and (min-width: 992px) {
@@ -24,12 +26,17 @@
   display: none;
 }
 
-/* .logosWish {
-  height: 40%;
-} */
-
 /* -------------------------------------------------------------------------- */
 /* Radio tile group */
+.radio-tile-invalid {
+  border: 0.11rem solid #dc3545;
+  border-radius: 1rem;
+}
+
+.radio-tile-valid {
+  border: 0.11rem solid #198754;
+  border-radius: 0.7rem;
+}
 
 .radio-tile-group {
   display: flex;
@@ -64,39 +71,62 @@
       justify-content: center;
       width: 100%;
       height: 100%;
-      border: 2px solid var(--primary-color);
+      border: 2px solid var(--radioTile-color);
       border-radius: 5px;
       padding: 1rem;
       transition: transform 300ms ease;
     }
+
+    /* .radio-tile-invalid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--danger-color);
+      border-radius: 5px;
+      padding: 1rem;
+      transition: transform 300ms ease;
+    } */
+
     .icon svg {
-      fill: var(--primary-color);
+      fill: var(--radioTile-color);
       width: 3rem;
       height: 3rem;
     }
+
     .radio-tile-label {
       text-align: center;
       font-size: 0.75rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1px;
-      color: var(--primary-color);
+      color: var(--radioTile-color);
     }
+    /* .radio-tile-label-invalid {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--danger-color);
+    } */
 
     /* active tile styles */
     .radio-button:checked + .radio-tile {
-      background-color: var(--primary-color);
-      border: 2px solid var(--primary-color);
+      background-color: var(--radioTile-color);
+      border: 2px solid var(--radioTile-color);
       color: white;
       transform: scale(1.1, 1.1);
 
       .icon svg {
         fill: white;
-        background-color: var(--primary-color);
+        background-color: var(--radioTile-color);
       }
       .radio-tile-label {
         color: white;
-        background-color: var(--primary-color);
+        background-color: var(--radioTile-color);
       }
     }
   }

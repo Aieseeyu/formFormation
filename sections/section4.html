@@ -67,12 +67,12 @@
   <div class="row">
     <div class="col-md-6 nomPrenomMargin">
       <label for="lastName" class="form-label"> Nom </label>
-      <input type="text" class="form-control" id="lastName" />
+      <input type="text" class="form-control" name="lastName" id="lastName" />
     </div>
 
     <div class="col-md-6 nomPrenomMargin">
       <label for="firstName" class="form-label"> Prénom </label>
-      <input type="text" class="form-control" id="firstName" />
+      <input type="text" class="form-control" name="firstName" id="firstName" />
     </div>
   </div>
 
@@ -160,7 +160,14 @@
       $(".notResidential").hide();
       $(".residential").show();
     }
+
+    if (".radio-button:checked") {
+      $("body").get(0).style.setProperty("--radioTile-color", "#198754");
+    }
   });
+
+  // pour le type formation, on change la variable css pour faciliter le changement de couleurs
+  $(".radio-button").on("change", function () {});
 
   checkBtnGroupColor();
 </script>
