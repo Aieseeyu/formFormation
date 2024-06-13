@@ -16,11 +16,11 @@ $(document).ready(function () {
       if ($(".section" + helpers.stepHistory).is(":empty")) {
         $("#nextStepTo").addClass("disabled");
         $.ajax({
-          url: "sections.php",
+          url: "ajax.php",
           method: "POST",
           dataType: "html",
           async: false,
-          data: helpers,
+          data: "action=getstep&stepHistory="+helpers.stepHistory
         })
           .done(function (response) {
             $(".section" + helpers.stepHistory).html(response);
