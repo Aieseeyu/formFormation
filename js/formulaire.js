@@ -20,7 +20,7 @@ $(document).ready(function () {
           method: "POST",
           dataType: "html",
           async: false,
-          data: "action=getstep&stepHistory="+helpers.stepHistory
+          data: "action=getstep&stepHistory=" + helpers.stepHistory,
         })
           .done(function (response) {
             $(".section" + helpers.stepHistory).html(response);
@@ -229,7 +229,28 @@ $(document).ready(function () {
 
         formBackToTop();
       } else {
-        console.log($("form").serializeArray());
+        let inputData = $("form").serializeArray();
+        let organizeDataDynamically = (data) => {
+          let organizedData = {};
+
+          data.forEach(({ name, value }) => {
+            if (value === "" || value === "----") return;
+
+            if (!organizedData[name]) {
+              organizedData[name] = value;
+            } else {
+              if (!Array.isArray(organizedData[name])) {
+                organizedData[name] = [organizedData[name]];
+              }
+              organizedData[name].push(value);
+            }
+          });
+
+          return organizedData;
+        };
+
+        console.log(organizeDataDynamically(inputData));
+        // console.log($("form").serializeArray());
       }
 
       // sur la page 4 on change le texte du boutton par "soumettre", la remise à suivant se fait dans le click du stepper d'en haut
