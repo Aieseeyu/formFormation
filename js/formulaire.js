@@ -166,10 +166,11 @@ $(document).ready(function () {
       email: {
         required: true,
         minlength: 2,
+        email: true,
       },
       phoneNumber: {
         required: true,
-        minlength: 2,
+        minlength: 8,
       },
       rgpdCheck: "required",
     },
@@ -208,11 +209,6 @@ $(document).ready(function () {
       phoneNumber: "Veuillez renseigner votre numéro de téléphone",
       rgpdCheck: "Veuillez accepter les conditions",
     },
-    errorPlacement: function (error, element) {
-      if ($(element).prop("class") == "form-check-input") {
-        console.log("form-check-input");
-      }
-    },
     submitHandler: function (form) {
       if (!(helpers.step == 4)) {
         // recuperer si la demande le concerne ou ses collaborateurs IL SERAIT PEUT ETRE MIEUX DE FAIRE UNE FONCTION?
@@ -230,9 +226,15 @@ $(document).ready(function () {
         } else {
           stepper(2);
         }
+
         formBackToTop();
       } else {
         console.log($("form").serializeArray());
+      }
+
+      // sur la page 4 on change le texte du boutton par "soumettre", la remise à suivant se fait dans le click du stepper d'en haut
+      if (helpers.step == 4) {
+        $("#nextStepText").text("Soumettre");
       }
 
       return false; /* required to block normal submit since you used ajax */
@@ -250,7 +252,10 @@ $(document).ready(function () {
       }
 
       // pour le type formation, on change la variable css pour faciliter le changement de couleurs
-      if (!$(".radio-button").is(":checked")) {
+      if (
+        !$(".radio-button").is(":checked") &&
+        $(".radio-button").is(":visible")
+      ) {
         $("body").get(0).style.setProperty("--radioTile-color", "#dc3545");
       }
     },
@@ -276,14 +281,14 @@ $(document).ready(function () {
       person.selfOrNot = $(".selfOrNot option:selected").val();
     }
 
-    // naviguer avec le stepper que si on a validé
-    // if (helpers.stepHistory >= $(this).data("steptop")) {
-    //   helpers.step = $(this).data("steptop");
-    //   stepper(helpers.step);
-    // }
-
+    // si on clique sur plus petit que step actuel, on change de page, sinon on ne change pas de page
     if ($(this).data("steptop") <= helpers.step) {
       stepper($(this).data("steptop"));
+    }
+
+    // on change le texte par suivant sur clique du stepper, sauf sur clique de section 4
+    if (!($(this).data("steptop") == 4)) {
+      $("#nextStepText").text("Suivant");
     }
 
     return false;

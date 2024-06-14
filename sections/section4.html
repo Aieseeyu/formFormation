@@ -126,13 +126,15 @@
 <label for="email" class="form-label"> Email </label>
 <input type="text" class="form-control mb-4" name="email" id="email" />
 
-<label for="phoneNumber" class="form-label"> Téléphone </label>
-<input
-  type="text"
-  class="form-control mb-4"
-  name="phoneNumber"
-  id="phoneNumber"
-/>
+<div class="row mb-4">
+  <label for="phoneNumber" class="form-label"> Téléphone </label>
+  <input
+    class="form-control mb-4"
+    name="phoneNumber"
+    type="tel"
+    id="phoneNumber"
+  />
+</div>
 
 <!-- checkbox rgpd -->
 <div class="form-check mb-4">
@@ -166,8 +168,12 @@
     }
   });
 
-  // pour le type formation, on change la variable css pour faciliter le changement de couleurs
-  $(".radio-button").on("change", function () {});
+  var input = document.querySelector("#phoneNumber");
+  window.intlTelInput(input, {
+    // options here
+    initialCountry: "FR",
+    strictMode: true,
+  });
 
   checkBtnGroupColor();
 </script>
