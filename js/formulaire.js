@@ -109,7 +109,7 @@ $(document).ready(function () {
         required: true,
         minlength: 2,
       },
-      bussinesActivity: {
+      businessActivity: {
         required: true,
         minlength: 2,
       },
@@ -170,7 +170,7 @@ $(document).ready(function () {
       },
       phoneNumber: {
         required: true,
-        minlength: 8,
+        minlength: 7,
       },
       rgpdCheck: "required",
     },
@@ -178,7 +178,7 @@ $(document).ready(function () {
       selectOccupation: "Veuillez choisir un statut",
       preciseStatus: "Veuillez préciser votre statut",
       businessName: "Veuillez renseigner le nom de l'entreprise",
-      bussinesActivity: "Veuillez renseigner l'activité de l'entreprise",
+      businessActivity: "Veuillez renseigner l'activité de l'entreprise",
       studentLevel: "Veuillez choisir un niveau d'étude",
       jobTitle: "Veuillez renseigner le poste que vous occupez",
       jobSearch: "Veuillez renseigner le domaine dans lequel vous recherchez",
@@ -229,27 +229,31 @@ $(document).ready(function () {
 
         formBackToTop();
       } else {
-        let inputData = $("form").serializeArray();
-        let organizeDataDynamically = (data) => {
-          let organizedData = {};
+        let inputData = $("form").serialize();
 
-          data.forEach(({ name, value }) => {
-            if (value === "" || value === "----") return;
-
-            if (!organizedData[name]) {
-              organizedData[name] = value;
-            } else {
-              if (!Array.isArray(organizedData[name])) {
-                organizedData[name] = [organizedData[name]];
-              }
-              organizedData[name].push(value);
-            }
+        $.ajax({
+          url: "ajax.php",
+          method: "POST",
+          dataType: "json",
+          data: "action=validform&" + inputData,
+        })
+          .done(function (response) {
+            // $(".section" + helpers.stepHistory).html(response);
+            // console.log(response);
+            alert("fqsdfqsd");
+            return false;
+          })
+          .fail(function (error) {
+            console.log(
+              "La requête s'est terminée en échec. Infos : " +
+                JSON.stringify(error)
+            );
+          })
+          .always(function () {
+            $("#nextStepTo").removeClass("disabled");
           });
 
-          return organizedData;
-        };
-
-        console.log(organizeDataDynamically(inputData));
+        console.log(inputData);
         // console.log($("form").serializeArray());
       }
 
