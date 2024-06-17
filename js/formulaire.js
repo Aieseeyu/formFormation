@@ -240,17 +240,18 @@ $(document).ready(function () {
           .done(function (response) {
             // $(".section" + helpers.stepHistory).html(response);
             // console.log(response);
-            alert("fqsdfqsd");
+            // console.log(response);
+            $("text-danger").html("<pre>" + response + "</pre>");
             return false;
           })
           .fail(function (error) {
-            console.log(
+            alert(
               "La requête s'est terminée en échec. Infos : " +
                 JSON.stringify(error)
             );
           })
           .always(function () {
-            $("#nextStepTo").removeClass("disabled");
+            // $("#nextStepTo").removeClass("disabled");
           });
 
         console.log(inputData);

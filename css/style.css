@@ -38,6 +38,10 @@ input[type="number"] {
   display: none;
 }
 
+.text-danger label {
+  cursor: pointer;
+}
+
 /* -------------------------------------------------------------------------- */
 /* Radio tile group */
 .radio-tile-invalid {
