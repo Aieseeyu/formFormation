@@ -24,6 +24,7 @@ function valideForm(){
     //$_POST["selectOccupation"] = 2;
     //$_POST["preciseStatus"] = '';
 
+    
     //unset($_POST["selectOccupation"]); //permet de supprimer un élément d'un tableau
 
 
