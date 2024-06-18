@@ -241,21 +241,17 @@ $(document).ready(function () {
             // $(".section" + helpers.stepHistory).html(response);
             // console.log(response);
             // console.log(response);
-            $("text-danger").html("<pre>" + response + "</pre>");
+            console.log(response);
             return false;
           })
           .fail(function (error) {
-            alert(
-              "La requête s'est terminée en échec. Infos : " +
-                JSON.stringify(error)
-            );
+            console.log(JSON.stringify(error));
           })
           .always(function () {
             // $("#nextStepTo").removeClass("disabled");
           });
 
         console.log(inputData);
-        // console.log($("form").serializeArray());
       }
 
       // sur la page 4 on change le texte du boutton par "soumettre", la remise à suivant se fait dans le click du stepper d'en haut
