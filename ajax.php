@@ -1,5 +1,8 @@
 <?php 
 
+define("template_dir", __DIR__);
+define("email", "stefan.dragos3479@gmail.com");
+
 //$_POST["action"] = "getstep"; //permet de solliciter le stepper
 
 
@@ -10,7 +13,7 @@ if(!empty($_POST["action"])){
 
 function getStep(){
     if(isset($_POST["stepHistory"]) && is_numeric($_POST["stepHistory"])){
-        $file = 'sections/section'.$_POST["stepHistory"].'.html';
+        $file = template_dir.'/sections/section'.$_POST["stepHistory"].'.html';
         if(file_exists($file)) die(@file_get_contents($file));
     }
     die(0);
@@ -37,7 +40,7 @@ function valideForm(){
             "4" => ["businessName","businessActivity"],
             "5" => "studentLevel",
             "6" => ["businessName","businessActivity"],
-            "7" => ["preciseStatus","jobSearch"],
+            "7" => "preciseStatus"
         ],
         "selfOrNot" => [
             "0"=> ["selfPcUsageRate","checkBoxTools","softwares","checkBoxWantToSelf"],
@@ -63,6 +66,111 @@ function valideForm(){
         "rgpdCheck"
     ];
 
+    // ajouter "dans la section ..." ????
+    $tabError = [
+        "selectOccupation" => "Veuillez choisir un statut",
+        "preciseStatus" => "Veuillez préciser votre statut",
+        "businessName" => "Veuillez renseigner le nom de l'entreprise",
+        "businessActivity" => "Veuillez renseigner l'activité de l'entreprise",
+        "studentLevel" => "Veuillez choisir un niveau d'étude",
+        "jobTitle" => "Veuillez renseigner le poste que vous occupez",
+        "jobSearch" => "Veuillez renseigner le domaine dans lequel vous recherchez",
+        "selfOrNot" => "Veuillez choisir pour qui est la demande",
+        "selfPcUsageRate" => "Veuillez choisir un niveau d'usage personnel de l'ordinateur",
+        "checkBoxTools" => "Veuillez sélectionner les outils que vous utilisez",
+        "softwares" => "Veuillez cocher les outils que vous utilisez",
+        "numberCollaborators" => "Veuillez renseigner le nombre de collaborateurs",
+        "notSelfUsagePc" => "Veuillez choisir si ils utilisent l'ordinateur dans le cadre de leur travail",
+        "checkBoxWantToSelf" => "Veuillez sélectionner sur quoi votre demande porte pour vous-même", // a voir
+        "checkboxWantToCollaborators" => "Veuillez sélectionner sur quoi votre demande porte pour vos collaborateurs", // a voir
+        "domainWanted" => "Veuillez cocher les domaines souhaités",
+        "checkBoxProgramming" => "Veuillez sélectionner les languages souhaitées",
+        "checkBoxDatabase" => "Veuillez sélectionner les bases de donées souhaitées",
+        "checkBoxSocial" => "Veuillez sélectionner les réseaux souhaités",
+        "otherWish" => "Veuillez renseigner quelle autre demande",
+        "typeWish" => "Veuillez choisir le type de formation souhaitée",
+        "lastName" => "Veuillez renseigner votre nom",
+        "firstName" => "Veuillez renseigner votre prénom",
+        "cityResidence" => "Veuillez renseigner votre ville de résidence",
+        "countryResidence" => "Veuillez renseigner votre pays de résidence",
+        "cityBusiness" => "Veuillez renseigner la ville de vos locaux",
+        "countryBusiness" => "Veuillez renseigner le pays de vos locaux",
+        "email" => "Veuillez renseigner votre email",
+        "phoneNumber" => "Veuillez renseigner votre numéro de téléphone",
+        "rgpdCheck" => "Veuillez accepter les conditions",
+    ];
+
+    $emailMessages = [
+            "1"=> [
+                "selectOccupation" => [
+                    "1" => "En recherche d'emploi",
+                    "2" => "Entrepreneur Individuel",
+                    "3" => "Dirigeant",
+                    "4" => "Salarié",
+                    "5" => "Étudiant",
+                    "6" => "Entreprise",
+                    "7" => "Autre",
+                    "message" => "Le statut: "
+                ],
+                "preciseStatus" => "Autre statut: ",
+                "businessName" => "Nom de l'entreprise: ",
+                "businessActivity" => "Activité de l'entreprise: ",
+                "studentLevel" => "Niveau d'étude: ",
+                "jobTitle" => "Intitulé du poste: ",
+                "jobSearch" => "Domaine de recherche d'emploi: ",
+                "selfOrNot" => [
+                    "1" => "Moi-même",
+                    "2" => "Mes collaborateurs",
+                    "message" => "La demande concerne: "
+                ],
+            ],
+            "2"=> [
+                "selfPcUsageRate" => "Utilisation personnelle de l'ordinateur: ",
+                "checkBoxTools" => "Outils utilisés: ",
+                "softwares" => "Logiciels utilisés: ",
+                "numberCollaborators" => "Nombre de collaborateurs: ",
+                "notSelfUsagePc" => "Utilisation des collaborateurs de l'ordinateur: ",
+            ],
+            "3"=> [
+                "checkBoxWantToSelf" => "Souhait personnel: ", // a voir
+                "checkboxWantToCollaborators" => "Souhait pour les collaborateurs: ", // a voir
+                "domainWanted" => "Domaines souhaités: ",
+                "checkBoxProgramming" => "Dans la programmation: ",
+                "checkBoxDatabase" => "Dans les bases de donées: ",
+                "checkBoxSocial" => "Dans les réseaux sociaux: ",
+                "otherWish" => "Autre demande: ",
+            ],
+            "4"=> [
+                "typeWish" => "Type de formation souhaité: ",
+                "lastName" => "Nom: ",
+                "firstName" => "Prénom: ",
+                "cityResidence" => "Ville de résidence: ",
+                "countryResidence" => "Pays de résidence: ",
+                "cityBusiness" => "Ville des locaux: ",
+                "countryBusiness" => "Pays des locaux: ",
+                "email" => "Email: ",
+                "phoneNumber" => "Numéro de téléphone: ",
+                "rgpdCheck" => [
+                    "0" => "Non",
+                    "1" => "Oui",
+                    "message" => "RGPD coché: "
+                ],
+            ],
+    ];
+
+    function getMessageError ($inputName, $tabError ){
+
+        // if (!empty($tabError[$inputName])) {
+        //     return $tabError[$inputName];
+        // } else {
+        //     return "champ ".$inputName." manquant";
+        // }
+
+        // version simplifiée (ternaire)
+        return !empty($tabError[$inputName]) ? $tabError[$inputName] : "champ ".$inputName." manquant";
+
+    };
+
 
     function sanitizeCheckbox ($value) {
 
@@ -75,191 +183,125 @@ function valideForm(){
 
 
     //tableau d'erreurs etc à retourner en JSON
-    $return = ["status" => "1", "post" => $_POST];
+    $return = ["status" => "1" /*, "post" => $_POST*/];
 
     $lastTab = [];
 
-
     // on verifie que le POST qu'on recoit est valide
     if(!empty($_POST) && is_array($_POST) && count($_POST) > 0){
-        
         // on reitere dans le tableau des champs requis
         foreach($tab_required as $key => $value){
             // si la valeur est un tableau on rentre, sinon on ajoute juste une erreur au tableau d'erreurs
             if (!is_array($value)) {
-                if (isset($_POST[$value])) {
+                if (!empty($_POST[$value])) {
                     $lastTab[$value] = sanitizeCheckbox($_POST[$value]);
                 } else {
-                    $return["errors"][] = "Champ '".$value."' manquant";
+                    $return["errors"][$value] = getMessageError($value, $tabError);
                 }
             } else {
-
                 if(isset($_POST[$key])){
                     $postValue = $_POST[$key];
-
-                    // if (is_array($postValue)) {
-                    //     foreach ($postValue as $keyyy => $valueee) {
-                    //         $lastTab[$key][] = $valueee;
-                    //     }
-                    // } else {
-                    //     $lastTab[$key] = $postValue;
-                    // }
-
                     $lastTab[$key] = sanitizeCheckbox($postValue);
-                    
-                    
-                    if (is_array($postValue)) {
 
+                    if (is_array($postValue)) {
                         foreach ($postValue as $keyForm => $valueForm) {
                             if(isset($value[$valueForm])){
-
                                 if (is_array($value[$valueForm])) {
-    
                                     foreach ($value[$valueForm] as $keySecond => $valueSecond) {
-                                        if(isset($_POST[$valueSecond])){
-    
+                                        if(!empty($_POST[$valueSecond])){
                                             $lastTab[$valueSecond] = sanitizeCheckbox($_POST[$valueSecond]);
-    
                                         } else {
-    
-                                            $return["errors"][] = "Champ '".$valueSecond."' manquant";
-                                            
+                                            $return["errors"][$valueSecond] = getMessageError($valueSecond, $tabError);
                                         }
                                     }
-    
                                 } elseif (!empty($_POST[$value[$valueForm]])) {
-                                    
-                                    $lastTab[$valueForm] = sanitizeCheckbox($_POST[$value[$valueForm]]);
-                                    
+                                    $lastTab[$value[$valueForm]] = sanitizeCheckbox($_POST[$value[$valueForm]]);
                                 } else {
-                                    $return["errors"][] = "Champ '".$key."' manquant";
+                                    $return["errors"][$key] = getMessageError($key, $tabError);
                                 }
-    
                             }
                         }
-                                            
                     } else {
-                        
                         if(isset($value[$postValue])){
-
                             if (is_array($value[$postValue])) {
-
                                 foreach ($value[$postValue] as $keySecond => $valueSecond) {
-                                    if(isset($_POST[$valueSecond])){
-
+                                    if(!empty($_POST[$valueSecond])){
                                         $lastTab[$valueSecond] = sanitizeCheckbox($_POST[$valueSecond]);
-
                                     } else {
-
-                                        $return["errors"][] = "Champ '".$valueSecond."' manquant";
-                                        
+                                        $return["errors"][$valueSecond] = getMessageError($valueSecond, $tabError);
                                     }
                                 }
-
                             } elseif (!empty($_POST[$value[$postValue]])) {
-                                
-                                $lastTab[$postValue] = sanitizeCheckbox($_POST[$value[$postValue]]);
-
+                                $lastTab[$value[$postValue]] = sanitizeCheckbox($_POST[$value[$postValue]]);
                             } else {
-                                $return["errors"][] = "Champ '".$key."' manquant";
+                                $return["errors"][$key] = getMessageError($key, $tabError);
                             }
-
                         }
                     }
-
                 } else {
-                    $return["errors"][] = "Champ '".$key."' manquant";
+                    $return["errors"][$key] = getMessageError($key, $tabError);
                 }
-
             }
-
         }
-
     } else die("erreur champs post");
 
+    
+    if (!empty($return["errors"]) && count($return["errors"]) > 0) {
+        $return["status"] = "0" ;
+    } else {
+        $return["html"] = @file_get_contents(template_dir."/sections/sectionFinal.html");
+    }
+
+    $message = "
+        <html>
+            <body>
+                <div style='font-family: Arial, sans-serif; line-height: 1.6;'>
+                    <h1 style='color: #333;'>Demande de ".$lastTab["firstName"]." ".$lastTab["lastName"]."</h1>
+    ";
+
+    foreach ($emailMessages as $numSection => $tabInputs) {
+
+        $message .= "<br><strong>Section ".$numSection."</strong><br>";
+
+        foreach ($tabInputs as $inputName => $inputValue) {
+            
+            if (is_array($inputValue)) {
+                if (isset($lastTab[$inputName])){
+                    if (isset($inputValue[$lastTab[$inputName]])) {
+                        $message .= "<p>".$inputValue["message"].$inputValue[$lastTab[$inputName]]."</p>";
+                    } else {
+                        $message .= "Les champs ne correspondent pas. <br>";
+                    }
+                } else {
+                    // $message .= "Le champ ".$inputName." n'a pas été trouvé. <br>";
+                }
+            } else {
+                if (isset($lastTab[$inputName])) {
+                    $message .= "<p>".$inputValue.$lastTab[$inputName]."</p>";
+                }   else {
+                    // $message .= "Le champ ".$inputName." n'a pas été trouvé. <br>";
+                }
+            }
+        }
+    }
+
+    $message .= "            
+                        <br><p>Cordialement,<br>L'équipe développement BrainyFormations</p>
+                    </div>
+                </body>
+            </html>
+        ";
+
+
+    $headers  = 'MIME-Version: 1.0' . "\n"; // Version MIME
+    $headers .= 'Content-type: text/html; charset=ISO-8859-1'."\n";
+
+    mail(email,"Demande",$message,$headers);
+
     $return["final"] = $lastTab;
+    $return["messageMail"] = $message;
     $return = json_encode($return); //(transforme notre tableau au format json)
     die($return); //on renvoie 
-
-    /*
-
-    2 structures possibles pour return :
-
-    return = {
-        "status":0, //on est en erreur
-        "errors" : [
-            "Adresse mail invalide",
-            "Numéro de téléphone invalide"
-        ]
-    }
-
-    return = {
-        "status":1 //on n'est pas en erreur
-    }
-
-    */
-    // $tab_ = [
-    //     "selectOccupation" => [
-    //         "1" => "jobSearch",
-    //         "2" => ["businessName","businessActivity"],
-    //         "3" => "jobTitle",
-    //         "5" => "studentLevel",
-    //         "7" => ["preciseStatus","jobSearch"],
-    //     ],
-    //     "selfOrNot" => [
-    //         "0"=> ["selfPcUsageRate","checkBoxTools","softwares","checkBoxWantToSelf"],
-    //         "1"=> ["selfPcUsageRate","checkBoxTools","softwares","checkBoxWantToSelf"],
-    //         "2"=> ["numberCollaborators","notSelfUsagePc","checkboxWantToCollaborators"],
-    //     ],
-    //     "domainWanted" => [ 
-    //         "Programmation Informatique" => "checkBoxProgramming",
-    //         "Bases de données" => "checkBoxDatabase",
-    //         "Réseaux Sociaux" => "checkBoxSocials",
-    //         "Autre" => "otherWish",
-    //     ],
-    //     "typeWish"=> [
-    //         "Dans vos locaux" => ["cityBusiness","countryBusiness"],
-    //         "Dans nos locaux à Cannes (FR)" => ["cityResidence","countryResidence"],
-    //         "Distanciel (Visio)" => ["cityResidence","countryResidence"],
-    //         "Hybride (présentiel et distanciel)" => ["cityResidence","countryResidence"],
-    //     ],
-    // ];
-
-
-
-    
-
-
-
-    // if (is_array($value)) {
-    //     // on reitere dans le tableau des champs requis en fonction de la valeur
-    //     foreach($value as $keySecond => $valueSecond){
-    //         // si la valeur correspond a une des valeurs du tableau des champs requis on rentre
-    //         if(isset($_POST[$keySecond])){
-    //             // si la valeur de la clé a plusieurs champs on rentre, sinon on ajoute juste une erreur au tableau d'erreurs
-    //             if (is_array($valueSecond)) {
-
-    //                 // on reitere dans le tableau des champs à verifier
-    //                 foreach($valueSecond as $keyThird => $valueThird){
-    //                     // si le champs n'est pas dans le POST on ajoute une erreur au tableau d'erreur
-    //                     if(!in_array($valueThird,$_POST)){
-    //                         $return["errors"][] = "Champ '".$valueThird."' manquant if 3";
-    //                     }
-    //                 }
-    //             } else {
-    //                 if(!in_array($valueSecond,$_POST)) {
-    //                     $return["errors"][] = "Champ '".$valueSecond."' manquant if 2";
-    //                 };
-    //             }
-    //         } else {
-    //             $return["a"][] = "Champ '".$keySecond."' manquant";
-    //         }
-    //     }
-    // } else {
-    //     if(!in_array($value,$_POST)) {
-    //         $return["errors"][] = "Champ '".$value."' manquant if 1";
-    //     };
-    // }
 
 }
 

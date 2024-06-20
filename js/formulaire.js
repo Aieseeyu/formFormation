@@ -211,12 +211,14 @@ $(document).ready(function () {
     },
     submitHandler: function (form) {
       if (!(helpers.step == 4)) {
-        // recuperer si la demande le concerne ou ses collaborateurs IL SERAIT PEUT ETRE MIEUX DE FAIRE UNE FONCTION?
-        if ($(".selfOrNot option:selected").val() == "0") {
-          // default
-          person.selfOrNot = 1;
-        } else {
-          person.selfOrNot = $(".selfOrNot option:selected").val();
+        if (helpers.step == 1) {
+          // recuperer si la demande le concerne ou ses collaborateurs IL SERAIT PEUT ETRE MIEUX DE FAIRE UNE FONCTION?
+          if ($(".selfOrNot option:selected").val() == "0") {
+            // default
+            person.selfOrNot = 1;
+          } else {
+            person.selfOrNot = $(".selfOrNot option:selected").val();
+          }
         }
 
         // pour afficher cacher les pages sur le button suivant
@@ -231,6 +233,10 @@ $(document).ready(function () {
       } else {
         let inputData = $("form").serialize();
 
+        if (!inputData.includes("selfOrNot")) {
+          inputData = inputData + "&selfOrNot=" + person.selfOrNot;
+        }
+
         $.ajax({
           url: "ajax.php",
           method: "POST",
@@ -238,10 +244,26 @@ $(document).ready(function () {
           data: "action=validform&" + inputData,
         })
           .done(function (response) {
-            // $(".section" + helpers.stepHistory).html(response);
-            // console.log(response);
-            // console.log(response);
             console.log(response);
+
+            if (response.status == 1) {
+              $("#formulaire").replaceWith(response.html);
+            } else {
+              for (let key in response.errors) {
+                $("#errorBox")
+                  .append(
+                    "<li ><label id='" +
+                      key +
+                      "-error' class='is-invalid' for='" +
+                      key +
+                      "' style></label>" +
+                      response.errors[key] +
+                      "</li>"
+                  )
+                  .show();
+              }
+            }
+
             return false;
           })
           .fail(function (error) {
@@ -250,8 +272,6 @@ $(document).ready(function () {
           .always(function () {
             // $("#nextStepTo").removeClass("disabled");
           });
-
-        console.log(inputData);
       }
 
       // sur la page 4 on change le texte du boutton par "soumettre", la remise à suivant se fait dans le click du stepper d'en haut
@@ -295,14 +315,6 @@ $(document).ready(function () {
     // on cache toutes les erreurs
     $("#errorBox").children().hide();
 
-    // recuperer si la demande le concerne ou ses collaborateurs IL SERAIT PEUT ETRE MIEUX DE FAIRE UNE FONCTION?
-    if ($(".selfOrNot option:selected").val() == "0") {
-      // default
-      person.selfOrNot = 1;
-    } else {
-      person.selfOrNot = $(".selfOrNot option:selected").val();
-    }
-
     // si on clique sur plus petit que step actuel, on change de page, sinon on ne change pas de page
     if ($(this).data("steptop") <= helpers.step) {
       stepper($(this).data("steptop"));
@@ -321,11 +333,17 @@ $(document).ready(function () {
   $(".selectOccupation").on("change", function () {
     $("#errorBox").children().hide();
     person.selected = $(".selectOccupation option:selected").val();
-    for (let index = 1; index <= 7; index++) {
+    for (let index = 1; index <= 8; index++) {
       $(".optionStatus" + index).hide();
     }
-    if (person.selected == 3 || person.selected == 2) {
-      $(".optionStatus4").show();
+
+    if (
+      person.selected == 2 ||
+      person.selected == 3 ||
+      person.selected == 4 ||
+      person.selected == 6
+    ) {
+      $(".optionStatus8").show();
     }
     $(".optionStatus" + person.selected).show();
   });

@@ -21,7 +21,7 @@
   </head>
   <body>
     <div class="container containerLarge">
-      <form class="form-control formulaire" id="formulaire">
+      <form class="form-control formulaire mt-2" id="formulaire">
         <!-- step by step -->
         <div class="card-body" id="steps">
           <div
@@ -97,10 +97,10 @@
               <option hidden disabled selected>----</option>
               <option value="1">En recherche d'emploi</option>
               <option value="2">Entrepreneur Individuel</option>
-              <option value="2">Dirigeant</option>
+              <option value="4">Dirigeant</option>
               <option value="3">Salarié</option>
               <option value="5">Étudiant</option>
-              <option value="2">Entreprise</option>
+              <option value="6">Entreprise</option>
               <option value="7">Autre</option>
             </select>
           </div>
@@ -119,8 +119,8 @@
             />
           </div>
 
-          <!-- option entreprise & entrepeneur individuel -->
-          <div class="mb-4 dispNone optionStatus2">
+          <!-- option entreprise & entrepeneur individuel dirigeant-->
+          <div class="mb-4 dispNone optionStatus2 optionStatus4 optionStatus6">
             <label for="bussinesName" class="form-label">
               Nom de l'entreprise
             </label>
@@ -188,7 +188,7 @@
           </div>
 
           <!-- radio si salarié ou dirigeant entreprise -->
-          <div class="mb-4 dispNone optionStatus4">
+          <div class="mb-4 dispNone optionStatus8">
             <div class="mb-4">
               <label for="selfOrNot" class="form-label"
                 >Votre demande concerne-t-elle vous-même ou vos collaborateurs?
