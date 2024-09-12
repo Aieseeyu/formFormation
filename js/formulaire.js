@@ -9,7 +9,6 @@ $(document).ready(function () {
   function stepper(step) {
     helpers.step = step;
 
-    // pour empecher d'avancer trop sur les etapes sans passer le suivant
     if (helpers.stepHistory < step) {
       helpers.stepHistory = step;
 
@@ -179,7 +178,7 @@ $(document).ready(function () {
       preciseStatus: "Veuillez préciser votre statut",
       businessName: "Veuillez renseigner le nom de l'entreprise",
       businessActivity: "Veuillez renseigner l'activité de l'entreprise",
-      studentLevel: "Veuillez choisir un niveau d'étude",
+      studentLevel: "Veuillez choisir un niveau d'études",
       jobTitle: "Veuillez renseigner le poste que vous occupez",
       jobSearch: "Veuillez renseigner le domaine dans lequel vous recherchez",
       selfOrNot: "Veuillez choisir pour qui est la demande",
@@ -245,8 +244,7 @@ $(document).ready(function () {
           data: "action=validform&" + inputData,
         })
           .done(function (response) {
-            console.log(response);
-
+            // console.log(response);
             if (response.status == 1) {
               $("#formulaire").replaceWith(response.html);
             } else {

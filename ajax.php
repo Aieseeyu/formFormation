@@ -3,8 +3,7 @@
 define("template_dir", __DIR__);
 define("email", "stefan.dragos3479@gmail.com");
 
-//$_POST["action"] = "getstep"; //permet de solliciter le stepper
-
+// exemple :   $_POST["action"] = "getstep"; //permet de solliciter le stepper
 
 if(!empty($_POST["action"])){
     if($_POST["action"] == "getstep") return getStep();
@@ -15,21 +14,14 @@ function getStep(){
     if(isset($_POST["stepHistory"]) && is_numeric($_POST["stepHistory"])){
         $file = template_dir.'/sections/section'.$_POST["stepHistory"].'.html';
         if(file_exists($file)) die(@file_get_contents($file));
+    } else {
+        die("requête incorrecte");
     }
     die(0);
 }
 
 
-
 function valideForm(){
-
-    // on reçoit $_POST depuis ajax
-    //$_POST["selectOccupation"] = 2;
-    //$_POST["preciseStatus"] = '';
-
-    
-    //unset($_POST["selectOccupation"]); //permet de supprimer un élément d'un tableau
-
 
 // tableau des champs requis dans tous les cas et des champs requis dynamiquement
     $tab_required = [
@@ -66,7 +58,7 @@ function valideForm(){
         "rgpdCheck"
     ];
 
-    // ajouter "dans la section ..." ????
+    // les erreures à renvoyer au front si les une des données reçues n'est pas bonne
     $tabError = [
         "selectOccupation" => "Veuillez choisir un statut",
         "preciseStatus" => "Veuillez préciser votre statut",
@@ -158,31 +150,21 @@ function valideForm(){
             ],
     ];
 
+    //si erreur, cette fonction est appelée, elle check si un message d'erreur personnalisé existe, sinon en crée un simple
     function getMessageError ($inputName, $tabError ){
-
-        // if (!empty($tabError[$inputName])) {
-        //     return $tabError[$inputName];
-        // } else {
-        //     return "champ ".$inputName." manquant";
-        // }
-
-        // version simplifiée (ternaire)
         return !empty($tabError[$inputName]) ? $tabError[$inputName] : "champ ".$inputName." manquant";
-
     };
 
-
+    //si plusieures données dans un tableau, les mets en string
     function sanitizeCheckbox ($value) {
-
         if (is_array($value)) {
             $value = implode(",", $value);
         } 
-
         return $value;
     };
 
 
-    //tableau d'erreurs etc à retourner en JSON
+    //tableau d'erreurs etc à retourner en JSON au front
     $return = ["status" => "1" /*, "post" => $_POST*/];
 
     $lastTab = [];
@@ -272,21 +254,17 @@ function valideForm(){
                     } else {
                         $message .= "Les champs ne correspondent pas. <br>";
                     }
-                } else {
-                    // $message .= "Le champ ".$inputName." n'a pas été trouvé. <br>";
                 }
             } else {
                 if (isset($lastTab[$inputName])) {
                     $message .= "<p>".$inputValue.$lastTab[$inputName]."</p>";
-                }   else {
-                    // $message .= "Le champ ".$inputName." n'a pas été trouvé. <br>";
                 }
             }
         }
     }
 
     $message .= "            
-                        <br><p>Cordialement,<br>L'équipe développement BrainyFormations</p>
+                        <br><p>Cordialement,<br>L'équipe développement de BrainyFormations</p>
                     </div>
                 </body>
             </html>
@@ -294,7 +272,7 @@ function valideForm(){
 
 
     $headers  = 'MIME-Version: 1.0' . "\n"; // Version MIME
-    $headers .= 'Content-type: text/html; charset=ISO-8859-1'."\n";
+    $headers .= 'Content-Type:text/html;charset=utf-8'."\n";
 
     mail(email,"Demande",$message,$headers);
 
